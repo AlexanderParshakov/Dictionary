@@ -1,0 +1,775 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#"
+     xml:base="http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-5="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AppliesUnit -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AppliesUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CategorizesWord -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CategorizesWord">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority1 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority1">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority2 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority2">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority3 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority3">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority4 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority4">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority5 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasSynonymWithPriority5">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasWord -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasWord">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Provides -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Provides">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label xml:lang="en">AdjectiveClass</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdpositionClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdpositionClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdpositionClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdverbClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdverbClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdverbClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AnimalDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AnimalDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AnimalDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Article -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Article">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#UsedSource"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AuxiliaryVerbClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AuxiliaryVerbClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AuxiliaryVerbClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#UsedSource"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#BuildingDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#BuildingDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#BuildingDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CardinalNumberClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CardinalNumberClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CardinalNumberClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CliticsClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CliticsClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CliticsClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CollocationUnit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CollocationUnit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasWord"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CollocationUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ConjunctionClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ConjunctionClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ConjunctionClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ContractionClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ContractionClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ContractionClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#DeterminerClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#DeterminerClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#DeterminerClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Game -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Game">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#UsedSource"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Game"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#InterjectionClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#InterjectionClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#InterjectionClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Journalism -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Journalism">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Journalism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Literature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Literature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Literature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MachineDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MachineDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MachineDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MeasureWordClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MeasureWordClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MeasureWordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NatureDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NatureDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NatureDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#OffenseDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#OffenseDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#OffenseDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CategorizesWord"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ParticleClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ParticleClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ParticleClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PronounClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PronounClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PronounClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Reading -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Reading">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Reading"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SentenceUnit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SentenceUnit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HasWord"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SentenceUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SoftwareDocumentation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SoftwareDocumentation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SoftwareDocumentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SoilDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SoilDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SoilDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AppliesUnit"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CollocationUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AppliesUnit"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SentenceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AppliesUnit"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#StringUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AppliesUnit"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#StringUnit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#StringUnit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#StringUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#TechnologyDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#TechnologyDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#TechnologyDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#UsedSource -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#UsedSource">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Provides"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CollocationUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Provides"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SentenceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Provides"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#StringUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Provides"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#UsedSource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VegetationDescription -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VegetationDescription">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VegetationDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VerbClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VerbClass">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PartOfSpeech"/>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VerbClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary">
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Vocabulary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#IsAppliedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#SphereOfUsage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#WordUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#American_Gods -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#American_Gods">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Bivouac -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Bivouac">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Caterpillar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Caterpillar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Compassionate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Compassionate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Crib -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Crib">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Dirty -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Dirty"/>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#End_of_Watch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#End_of_Watch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Finder_Keepers -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Finder_Keepers">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Gregarious -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Gregarious">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Hale -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Hale">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Impartial -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Impartial">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Lanky -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Lanky">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Mr._Mercedes -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Mr._Mercedes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Pebbles -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Pebbles">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Scruffy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Scruffy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+        <untitled-ontology-5:HasSynonymWithPriority2 rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Dirty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Shorthand -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Shorthand">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#The_Stand -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#The_Stand">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Book"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Tosh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Tosh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Upbeat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Upbeat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#HumanDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#The_Witcher_3:_Wild_Hunt -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#The_Witcher_3:_Wild_Hunt">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#Game"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdjectiveClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdpositionClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AdverbClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#AuxiliaryVerbClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CardinalNumberClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#CliticsClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ConjunctionClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ContractionClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#DeterminerClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#InterjectionClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#MeasureWordClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#NounClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#ParticleClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#PronounClass"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/alexander/ontologies/2018/11/untitled-ontology-5#VerbClass"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi -->
+
