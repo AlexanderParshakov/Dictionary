@@ -1,0 +1,362 @@
+﻿<Window x:Class="New_designed_Dictionary.Modals.EditDictionaryUnit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:New_designed_Dictionary.Modals"
+        xmlns:resources="clr-namespace:New_designed_Dictionary.Resources"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="EditDictionaryUnit" 
+        Height="920" 
+        Width="450"
+        >
+    <Grid 
+        x:Name="gridAll" 
+        MouseDown="gridAll_MouseDown"
+        >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Background="#4a76a8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="100" x:Name="rExample"/>
+                <RowDefinition Height="100" x:Name="rNote"/>
+                <RowDefinition Height="20" x:Name="rlbTags"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock 
+                        x:Name="lbContentOfUnit" 
+                        Panel.ZIndex="1"
+                        Text="{x:Static resources:Literals.Label_Contents}" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        FontSize="16" 
+                        Margin="10 10 0 0" 
+                        MaxWidth="100"
+                        Foreground="White" 
+                        FontFamily="Candara"
+                        />
+                <TextBox 
+                    x:Name="tbContentOfUnit"
+                    Text="{x:Static resources:Literals.Placeholder_Contents}"
+                    Background="#dfe6ed"
+                    Foreground="#4a76a8"
+                    BorderThickness="0.25"
+                    BorderBrush="White"
+                    Height="80" 
+                    Width="420" 
+                    FontSize="18" 
+                    FontFamily="Candara" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Top"
+                    VerticalAlignment="Top"
+                    Margin="0 30 0 0"
+                    TextWrapping="Wrap"
+                    Padding="4 0 3 1"
+                    MaxLength="1000"
+                    GotFocus="tbContentOfUnit_GotFocus"
+                    LostFocus="tbContentOfUnit_LostFocus"
+                    />
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock 
+                        x:Name="lbMeaning" 
+                        Panel.ZIndex="1"
+                        Text="{x:Static resources:Literals.Label_Meaning}" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        FontSize="16" 
+                        Margin="10 10 0 0" 
+                        MaxWidth="100"
+                        Foreground="White" 
+                        FontFamily="Candara"
+                        />
+                <TextBox 
+                    x:Name="tbMeaning"
+                    Text="{x:Static resources:Literals.Placeholder_Meaning}"
+                    Background="#dfe6ed"
+                    Foreground="#4a76a8"
+                    BorderThickness="0.25"
+                    BorderBrush="White"
+                    Height="80" 
+                    Width="420" 
+                    FontSize="18" 
+                    FontFamily="Candara" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Top"
+                    VerticalAlignment="Top"
+                    Margin="0 30 0 0"
+                    TextWrapping="Wrap"
+                    Padding="4 0 3 1"
+                    MaxLength="1000"
+                    GotFocus="tbMeaning_GotFocus"
+                    LostFocus="tbMeaning_LostFocus"
+                    />
+            </Grid>
+            <Grid Grid.Row="2" 
+                HorizontalAlignment="Center"
+                >
+                <TextBlock 
+                    x:Name="lbSource" 
+                    Panel.ZIndex="1"
+                    Text="{x:Static resources:Literals.Label_Source}" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left"
+                    FontSize="16" 
+                    Margin="0 5 0 0" 
+                    MaxWidth="200"
+                    Foreground="White" 
+                    FontFamily="Candara"
+                    />
+                <ComboBox 
+                    x:Name="cbSources"
+                    Width="420"
+                    Height="30"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    DisplayMemberPath="Name"
+                    FontSize="18"
+                    Background="White"
+                    Foreground="#4a76a8"
+                    Margin="0 30 0 5"
+                    Padding="5 0 0 0"
+                    />
+            </Grid>
+            <Grid Grid.Row="3" 
+                HorizontalAlignment="Center"
+                >
+                <TextBlock 
+                    x:Name="lbPartOfSpeech" 
+                    Panel.ZIndex="1"
+                    Text="{x:Static resources:Literals.Label_TypeOfUnit}" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left"
+                    FontSize="16" 
+                    Margin="10 10 0 0" 
+                    MaxWidth="200"
+                    Foreground="White" 
+                    FontFamily="Candara"
+                    />
+                <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                    Height="170"
+                    Margin="0 30 0 0"
+                    >
+                    <ItemsControl 
+                    x:Name="itemControlTypesOfUnit"
+                        Width="450"
+                        Loaded="itemControlTypesOfUnit_Loaded"
+                        >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox  
+                                x:Name="TypeOfUnit"
+                                Content="{Binding Path=Name}"
+                                FontFamily="Candara" 
+                                FontSize="19" 
+                                Margin="25 5 0 0"
+                                Foreground="White" 
+                                Background="White"
+                                />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="4">
+                <TextBlock 
+                        x:Name="lbExample" 
+                        Panel.ZIndex="1"
+                        Text="{x:Static resources:Literals.Label_Example}" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        FontSize="16" 
+                        Margin="10 10 0 0" 
+                        MaxWidth="100"
+                        Foreground="White" 
+                        FontFamily="Candara"
+                        />
+                <TextBox 
+                    x:Name="tbExample"
+                    Text="{x:Static resources:Literals.Placeholder_Example}"
+                    Background="#dfe6ed"
+                    Foreground="#4a76a8"
+                    BorderThickness="0.25"
+                    BorderBrush="White"
+                    Height="80" 
+                    Width="420" 
+                    FontSize="18" 
+                    FontFamily="Candara" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Top"
+                    VerticalAlignment="Top"
+                    Margin="0 30 0 0"
+                    TextWrapping="Wrap"
+                    Padding="4 0 3 1"
+                    MaxLength="1000"
+                    GotFocus="tbExample_GotFocus"
+                    LostFocus="tbExample_LostFocus"
+                    />
+            </Grid>
+            <Grid Grid.Row="5">
+                <TextBlock 
+                        x:Name="lbNote" 
+                        Panel.ZIndex="1"
+                        Text="{x:Static resources:Literals.Label_Note}" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        FontSize="16" 
+                        Margin="10 10 0 0" 
+                        MaxWidth="100"
+                        Foreground="White" 
+                        FontFamily="Candara"
+                        />
+                <TextBox 
+                    x:Name="tbNote"
+                    Text="{x:Static resources:Literals.Placeholder_Note}"
+                    Background="#dfe6ed"
+                    Foreground="#4a76a8"
+                    BorderThickness="0.25"
+                    BorderBrush="White"
+                    Height="80" 
+                    Width="420" 
+                    FontSize="18" 
+                    FontFamily="Candara" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Top"
+                    VerticalAlignment="Top"
+                    Margin="0 30 0 0"
+                    TextWrapping="Wrap"
+                    Padding="4 0 3 1"
+                    MaxLength="1000"
+                    GotFocus="tbNote_GotFocus"
+                    LostFocus="tbNote_LostFocus"
+                    />
+            </Grid>
+            <Grid Grid.Row="6">
+                <TextBlock 
+                        x:Name="lbSpheresOfUsage" 
+                        Panel.ZIndex="1"
+                        Text="{x:Static resources:Literals.Label_Tags}" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        FontSize="16" 
+                        Margin="10 0 0 0" 
+                        MaxWidth="100"
+                        Foreground="White" 
+                        FontFamily="Candara"
+                        />
+            </Grid>
+            <Grid Grid.Row="7">
+                <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                    Margin="0 30 0 0"
+                    Panel.ZIndex="2"
+                    MouseEnter="ItemsControlTags_MouseEnter"
+                    MouseLeave="ItemsControlTags_MouseLeave"
+                    >
+                    <ItemsControl 
+                    x:Name="itemsControlTags"
+                        Width="450"
+                        Loaded="itemsControlTags_Loaded"
+                    >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox  
+                                x:Name="Tag"
+                                Content="{Binding Path=Name}"
+                                FontFamily="Candara" 
+                                FontSize="19" 
+                                Margin="25 5 0 0"
+                                Foreground="White" 
+                                Background="White"
+                                />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <Button 
+                        x:Name="btnAddTag" 
+                        Panel.ZIndex="3"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Right"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Width="60" 
+                        Height="30"
+                        FontSize="19" 
+                    Margin="0 5 0 0"
+                    Click="btnAddTag_Click"
+                            >
+                    <materialDesign:PackIcon 
+                                Foreground="White" 
+                                Kind="AddBox" 
+                                Width="25" 
+                                Height="25"
+                                />
+                </Button>
+            </Grid>
+            <Grid Grid.Row="8" 
+                Background="#4a76a8"
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="83*"/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    x:Name ="btnOK" 
+                            Background="#dfe6ed" 
+                            Foreground="#4a76a8" 
+                    Content="OK" 
+                    VerticalAlignment="Center" 
+                    Width="150" 
+                    Height="35" 
+                    Margin="0,8,170.207,6.811" 
+                    FontSize="19" 
+                    HorizontalAlignment="Right" 
+                    Visibility="Visible" 
+                    Grid.ColumnSpan="2"
+                    Click="btnOK_Click"
+                    />
+                <Button 
+                    x:Name="btnCancel" 
+                            Background="#dfe6ed" 
+                            Foreground="#4a76a8" 
+                    Content="Cancel" 
+                    VerticalAlignment="Center" 
+                    Width="150" 
+                    Height="35" 
+                    Margin="0,8,10.207,6.811" 
+                    FontSize="19" 
+                    HorizontalAlignment="Right" 
+                    Grid.Column="1"
+                    Click="btnCancel_Click" 
+                    />
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

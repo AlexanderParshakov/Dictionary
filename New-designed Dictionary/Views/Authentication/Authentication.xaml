@@ -68,6 +68,7 @@
                     materialDesign:HintAssist.Hint="LOGIN" 
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                     FontSize="18"
+                    Text="AlexanderParshakov"
                     KeyDown="tbLogin_KeyDown"
                     />
                 <PasswordBox 
@@ -76,6 +77,7 @@
                     materialDesign:HintAssist.Hint="PASSWORD"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                     FontSize="18"
+                    Password="123"
                     KeyDown="tbPassword_KeyDown"
                     />
             </StackPanel>
@@ -98,7 +100,7 @@
             Foreground="Gray" 
             Cursor="Hand"
             />
-        <Image Source="D:\Folders\VS Projects\New-designed Dictionary\New-designed Dictionary\Resources\home.png" 
+        <Image Source="D:\My Folders\VS Projects\New-designed Dictionary\New-designed Dictionary\Resources\home.png" 
                Width="100" 
                Height="100" 
                VerticalAlignment="Top" 

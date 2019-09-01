@@ -5,16 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="371c2e93aa414c3fb40004f1b6012fc7" Name="Diagram1">
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.PartsOfSpeech" Width="1.5" PointX="0.875" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.Source" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.sysdiagram" Width="1.5" PointX="5" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.Theme" Width="1.5" PointX="0.875" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.WordUnit" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
-        <AssociationConnector Association="MyOwnDictionaryModel.relSourcesWordUnit" ManuallyRouted="false" />
-        <AssociationConnector Association="MyOwnDictionaryModel.relWordUnitPartOfSpeech" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.User" Width="1.5" PointX="3" PointY="6.25" />
-        <EntityTypeShape EntityType="MyOwnDictionaryModel.Tag" Width="1.5" PointX="5.375" PointY="5.875" />
-        <AssociationConnector Association="MyOwnDictionaryModel.relWordUnitSphereOfUsage1" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.Language" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.Source" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.Tag" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.Theme" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.UnitType" Width="1.5" PointX="3" PointY="5.75" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.User" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="MyOwnDictionaryModel.WordUnit" Width="1.5" PointX="5.25" PointY="1" />
+        <AssociationConnector Association="MyOwnDictionaryModel.UserRelLanguage" />
+        <AssociationConnector Association="MyOwnDictionaryModel.UserRelSource" />
+        <AssociationConnector Association="MyOwnDictionaryModel.UserRelTag" />
+        <AssociationConnector Association="MyOwnDictionaryModel.UserRelWordUnit" />
+        <AssociationConnector Association="MyOwnDictionaryModel.WordUnitRelLanguage" />
+        <AssociationConnector Association="MyOwnDictionaryModel.WordUnitRelSource" />
+        <AssociationConnector Association="MyOwnDictionaryModel.WordUnitRelTag" />
+        <AssociationConnector Association="MyOwnDictionaryModel.WordUnitRelUnitTypes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

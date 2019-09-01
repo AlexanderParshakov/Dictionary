@@ -52,11 +52,13 @@
                     VerticalAlignment="Center"
                     >
                     <CheckBox 
-                    Content="{x:Static resources:Literals.CheckBox_SearchOnTyping}"
-                    Foreground="#4a76a8"
-                    Background="#4a76a8"
-                    VerticalAlignment="Center"
-                    FontSize="13"
+                        x:Name="chbSearchWhileTyping"
+                        Content="{x:Static resources:Literals.CheckBox_SearchOnTyping}"
+                        Foreground="#4a76a8"
+                        Background="#4a76a8"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        IsThreeState="False"
                     />
                 </StackPanel>
                 <Line 
@@ -84,46 +86,56 @@
                     Margin="0 2 0 3"
                     />
                     <CheckBox 
-                    Content="{x:Static resources:Literals.CheckBox_SearchByMeaning}"
-                    Foreground="#4a76a8"
-                    Background="#4a76a8"
-                    VerticalAlignment="Top"
-                    FontSize="14"
-                    Margin="5 0 0 0"
-                    />
+                        x:Name="chbSearchMeaning"
+                        Content="{x:Static resources:Literals.CheckBox_SearchByMeaning}"
+                        Foreground="#4a76a8"
+                        Background="#4a76a8"
+                        VerticalAlignment="Top"
+                        FontSize="14"
+                        Margin="5 0 0 0"
+                        IsThreeState="False"
+                        />
+                    
                     <CheckBox 
-                    Content="{x:Static resources:Literals.CheckBox_SearchBySource}"
-                    Foreground="#4a76a8"
-                    Background="#4a76a8"
-                    VerticalAlignment="Top"
-                    FontSize="14"
-                    Margin="5 0 0 0"
-
-                    />
+                        x:Name="chbSearchSource"
+                        Content="{x:Static resources:Literals.CheckBox_SearchBySource}"
+                        Foreground="#4a76a8"
+                        Background="#4a76a8"
+                        VerticalAlignment="Top"
+                        FontSize="14"
+                        Margin="5 0 0 0"
+                        IsThreeState="False"
+                        />
                     <CheckBox 
-                    Content="{x:Static resources:Literals.CheckBox_SearchByTag}"
-                    Foreground="#4a76a8"
-                    Background="#4a76a8"
-                    VerticalAlignment="Top"
-                    FontSize="14"
-                    Margin="5 0 0 0"
-                    />
+                        x:Name="chbSearchTags"
+                        Content="{x:Static resources:Literals.CheckBox_SearchByTag}"
+                        Foreground="#4a76a8"
+                        Background="#4a76a8"
+                        VerticalAlignment="Top"
+                        FontSize="14"
+                        Margin="5 0 0 0"
+                        IsThreeState="False"
+                        />
                     <CheckBox 
-                    Content="{x:Static resources:Literals.CheckBox_SearchByExample}"
-                    Foreground="#4a76a8"
-                    Background="#4a76a8"
-                    VerticalAlignment="Top"
-                    FontSize="14"
-                    Margin="5 0 0 0"
-                    />
+                        x:Name="chbSearchExample"
+                        Content="{x:Static resources:Literals.CheckBox_SearchByExample}"
+                        Foreground="#4a76a8"
+                        Background="#4a76a8"
+                        VerticalAlignment="Top"
+                        FontSize="14"
+                        Margin="5 0 0 0"
+                        IsThreeState="False"
+                        />
                     <CheckBox 
-                    Content="{x:Static resources:Literals.CheckBox_SearchByNote}"
-                    Foreground="#4a76a8"
-                    Background="#4a76a8"
-                    VerticalAlignment="Top"
-                    FontSize="14"
-                    Margin="5 0 0 0"
-                    />
+                        x:Name="chbSearchNote"
+                        Content="{x:Static resources:Literals.CheckBox_SearchByNote}"
+                        Foreground="#4a76a8"
+                        Background="#4a76a8"
+                        VerticalAlignment="Top"
+                        FontSize="14"
+                        Margin="5 0 0 0"
+                        IsThreeState="False"
+                        />
                 </StackPanel>
                 <Line 
                 Height="1" 
@@ -141,16 +153,16 @@
 
             <Grid Grid.Row="3">
                 <Button 
-                    x:Name="btnOk" 
+                    x:Name="btnOK" 
                     Background="#dfe6ed"
                     Foreground="#4a76a8" 
-                    Content="Ok" 
+                    Content="OK" 
                     VerticalAlignment="Bottom" 
                     Width="90" 
                     Height="25" 
                     Margin="5 0 0 5" 
                     HorizontalAlignment="Left" 
-                    Click="btnCancel_Click"
+                    Click="btnOK_Click"
                     />
                 <Button 
                     x:Name="btnCancel" 

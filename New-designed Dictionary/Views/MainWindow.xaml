@@ -7,17 +7,18 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:resources="clr-namespace:New_designed_Dictionary.Resources"
         mc:Ignorable="d"
-        Title="MainWindow" 
         Height="770" 
+        MinHeight="770"
+        ResizeMode="CanResizeWithGrip"
         Width="1500" 
+        MinWidth="1500"
         WindowStartupLocation="CenterScreen" 
-        ResizeMode="NoResize" 
-        WindowStyle="None"
+        Title="My Own Dictionary"
         Opacity="1"
         Loaded="Window_Loaded" 
         Visibility="Visible"
+        SizeToContent="WidthAndHeight"
         >
-
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames
@@ -29,7 +30,7 @@
                     Value="50"
                     />
                 <EasingDoubleKeyFrame 
-                    KeyTime="0:0:0.1" 
+                    KeyTime="0:0:0.5" 
                     Value="280"
                     />
             </DoubleAnimationUsingKeyFrames>
@@ -44,7 +45,7 @@
                     Value="280"
                     />
                 <EasingDoubleKeyFrame 
-                    KeyTime="0:0:0.1" 
+                    KeyTime="0:0:0.5" 
                     Value="50"
                     />
             </DoubleAnimationUsingKeyFrames>
@@ -118,15 +119,15 @@
         MouseDown="gridAll_MouseDown"
         >
         <Grid.RowDefinitions>
-            <RowDefinition Height="630"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="620*"/>
+            <RowDefinition Height="150*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="245"/>
-                <ColumnDefinition Width="465"/>
-                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="1.45*"/>
+                <ColumnDefinition Width="1.45*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -135,53 +136,70 @@
                 Background="#4a76a8" 
                 Margin="0,0,0.434,-0.113"
                 >
+                <TextBlock 
+                        FontFamily="Candara" 
+                        FontSize="32" 
+                        Text="Editing" 
+                        Foreground="White" 
+                        Margin="0 0 0 0"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Stretch"
+                        />
                 <Button 
                     x:Name="btnAddWordUnit" 
                     Background="#dfe6ed" 
                     Foreground="#4a76a8" 
                     Content="Add a word unit..." 
-                    VerticalAlignment="Top" 
+                    VerticalAlignment="Stretch" 
                     Width="200" 
                     Height="55" 
                     Margin="0 10 0 0"
                     FontSize="19" 
-                    HorizontalAlignment="Center" 
+                    HorizontalAlignment="Stretch" 
                     Click="btnAddWordUnit_Click"
                     />
             </Grid>
             <Grid Grid.Column="1">
-                <TextBlock 
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock 
                         x:Name="lbExample" 
-                        Panel.ZIndex="1"
+                        Panel.ZIndex="2"
                         Text="Example:" 
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left"
-                        FontSize="16" 
-                        Margin="30 0 0 0" 
-                        MaxWidth="60"
+                        FontSize="19" 
+                        Margin="15 0 0 0" 
+                        MaxWidth="100"
                         Foreground="White" 
                         FontFamily="Candara"
                         />
-                <TextBox 
+                    <TextBox 
                         x:Name="tbExample"
-                        Panel.ZIndex="2"
+                        Panel.ZIndex="1"
                         IsEnabled="False" 
-                        Width="400" 
-                        Height="90" 
-                        VerticalAlignment="Top"
-                        Margin="20 20 0 5" 
+                        MinWidth="400" 
+                        MinHeight="110" 
+                        Margin="10 0 5 0"
+                        VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
                         BorderBrush="White" 
-                        BorderThickness="0"
+                    BorderThickness="1 0 0 1" 
                         TextWrapping="Wrap" 
-                        FontSize="20" 
-                        VerticalContentAlignment="Top"
+                        FontSize="16" 
                         Foreground="White" 
-                        Padding="3 0 3 1" 
+                        Padding="3 8 3 1" 
                         FontFamily="Candara" 
                         Text="{Binding Example}"
-                        GotFocus="tbExample_GotFocus"
+                        GotFocus="tbExample_GotFocus" Grid.ColumnSpan="2"
                         />
-                <Button 
+                    <Button 
                         x:Name="btnSaveExample" 
                         Panel.ZIndex="3"
                         VerticalAlignment="Top" 
@@ -192,77 +210,73 @@
                         Height="30"
                         FontSize="19" 
                         Visibility="Collapsed"
-                        Click="btnSaveExample_Click" 
+                        Click="btnSaveExample_Click" Grid.ColumnSpan="2" Margin="0,0,-0.491,0" 
                             >
-                    <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                                 Foreground="White" 
                                 Kind="ContentSave" 
                                 Width="25" 
                                 Height="25"
                                 />
-                </Button>
-                <TextBlock 
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock 
                         x:Name="lbSavedExample" 
                         Text="Saved successfully!" 
                         VerticalAlignment="Bottom" 
                     HorizontalAlignment="Center"
                     TextAlignment="Center"
                         FontSize="16" 
-                        Margin="0 0 0 8" 
+                        Margin="33,0,32.509,7.528" 
                     Width="400"
                         Foreground="White" 
                         FontFamily="Candara" 
-                        Opacity="0"
+                        Opacity="0" Grid.ColumnSpan="2"
                         >
-                </TextBlock>
+                    </TextBlock>
+                </Grid>
             </Grid>
-            <Grid Grid.Column="2">
-                <TextBlock 
+            <Grid Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock 
                         x:Name="lbNote" 
-                    Panel.ZIndex="1"
+                    Panel.ZIndex="2"
                         Text="Note:" 
                         VerticalAlignment="Top" 
-                        FontSize="16" 
-                        Margin="30 0 0 0" 
-                        MaxWidth="60"
+                        FontSize="19" 
+                        Margin="15 0 0 0" 
+                        MaxWidth="100"
                     HorizontalAlignment="Left"
                         Foreground="White" 
                         FontFamily="Candara"
                         />
-                <TextBox 
+                    <TextBox 
                     x:Name="tbNote"
-                    Panel.ZIndex="2"
+                    Panel.ZIndex="1"
                     IsEnabled="False"  
-                    Width="400" 
-                    Height="90" 
-                    Margin="20 20 0 5" 
-                    VerticalAlignment="Top"
+                    MinWidth="400" 
+                    MinHeight="110" 
+                        Margin="10 0 0 0"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
                     BorderBrush="White" 
-                    BorderThickness="0" 
+                    BorderThickness="1 0 0 1" 
                     TextWrapping="Wrap" 
-                    FontSize="20" 
-                    VerticalContentAlignment="Top"
+                    FontSize="16" 
                     Foreground="White" 
-                    Padding="3 0 3 1" 
+                    Padding="3 8 3 1" 
                     FontFamily="Candara" 
                     Text="{Binding Note}"
                     GotFocus="tbNote_GotFocus"
                     />
-                <TextBlock 
-                    x:Name="lbSavedNote" 
-                    Text="Saved successfully!" 
-                    VerticalAlignment="Bottom" 
-                    HorizontalAlignment="Center"
-                    TextAlignment="Center"
-                    FontSize="16" 
-                    Margin="0 0 0 8" 
-                    Width="400"
-                    Foreground="White" 
-                    FontFamily="Candara" 
-                    Opacity="0"
-                    >
-                </TextBlock>
-                <Button 
+                    <Button 
                         x:Name="btnSaveNote" 
                         Panel.ZIndex="3"
                         VerticalAlignment="Top" 
@@ -275,21 +289,81 @@
                         Visibility="Collapsed"
                         Click="btnSaveNote_Click" 
                             >
-                    <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                                 Foreground="White" 
                                 Kind="ContentSave" 
                                 Width="25" 
                                 Height="25"
                                 />
-                </Button>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <TextBlock 
+                    x:Name="lbSavedNote" 
+                    Text="Saved successfully!" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"
+                    FontSize="16" 
+                    Margin="0 0 0 8" 
+                    Width="400"
+                    Foreground="White" 
+                    FontFamily="Candara" 
+                    Opacity="0"
+                    >
+                    </TextBlock>
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBlock 
+                        FontFamily="Candara" 
+                        FontSize="32" 
+                        Text="Import &amp; Export" 
+                        Foreground="White" 
+                        Margin="0 0 0 0"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top"
+                        />
+                <StackPanel 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center"
+                        >
+                    <Button 
+                            x:Name="btnImport" 
+                            Background="#dfe6ed" 
+                            Foreground="#4a76a8" 
+                            Content="Import" 
+                            VerticalAlignment="Center" 
+                            Width="150" 
+                            Height="55" 
+                            Margin="0 10 5 0"
+                            FontSize="16" 
+                            HorizontalAlignment="Center"
+                            Click="btnImport_Click"
+                            />
+                    <Button 
+                            x:Name="btnExport" 
+                            Background="#dfe6ed" 
+                            Foreground="#4a76a8" 
+                            Content="Export" 
+                            VerticalAlignment="Center" 
+                            Width="150" 
+                            Height="55" 
+                            HorizontalAlignment="Right"
+                            Margin="0 10 0 0"
+                            FontSize="19" 
+                            Click="btnExport_Click"
+                            />
+                </StackPanel>
             </Grid>
         </Grid>
 
         <Grid Background="{x:Null}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="920"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3.2*"/>
+                <!--<ColumnDefinition Width="*"/>-->
             </Grid.ColumnDefinitions>
 
             <Grid 
@@ -298,94 +372,115 @@
                 >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="130"/>
-                    <RowDefinition Height="450"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid 
                     Background="#4a76a8" 
                     Grid.Row="0"
                     >
-                    <TextBlock 
-                        FontFamily="Candara" 
-                        FontSize="28" 
-                        Text="Tags" 
-                        Foreground="White" 
-                        Margin="0 80 0 0"
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"
+                    <Button 
+                        x:Name="btnSelectAllTags" 
+                        Background="#dfe6ed" 
+                        Foreground="#4a76a8" 
+                        Content="All tags" 
+                        VerticalAlignment="Bottom" 
+                        Width="110" 
+                        Height="40" 
+                        Margin="5 10 0 5"
+                        FontSize="16" 
+                        HorizontalAlignment="Left"
+                        Click="btnSelectAllTags_Click"
+                        />
+                    <Button 
+                        x:Name="btnDeselectAllTags" 
+                        Background="#dfe6ed" 
+                        Foreground="#4a76a8" 
+                        Content="No tags" 
+                        VerticalAlignment="Bottom" 
+                        Width="110" 
+                        Height="40" 
+                        Margin="0 10 5 5"
+                        FontSize="16" 
+                        HorizontalAlignment="Right"
+                        Click="btnDeselectAllTags_Click"
+                        />
+                </Grid>
+                <Grid Background="White" Grid.Row="1">
+                    <ComboBox 
+                        x:Name="cbTypeOfTagFilter" 
+                        Height="40"
+                        FontSize="18"
+                        VerticalAlignment="Stretch" 
+                        VerticalContentAlignment="Center"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
                         />
                 </Grid>
                 <Grid 
                     Background="White" 
-                    Grid.Row="1"
+                    Grid.Row="2"
                     >
-                    <ListView 
-                        x:Name="lvSpheres" 
-                        Style="{DynamicResource lvForSpheres}"
-                        FontFamily="Candara" 
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                        Height="450" 
-                        VerticalAlignment="Top"
+                    <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                        VerticalAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                    >
+                        <ItemsControl x:Name="itemsControlTags"
                         >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ListViewItem 
-                                    Height="40" 
-                                    Focusable="False"
-                                    >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="1"
+                                                 IsItemsHost="True" 
+                                                 VerticalAlignment="Stretch"
+                                                 />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
                                     <CheckBox 
-                                            x:Name="rbSphereOfUsage" 
-                                            Content="{Binding Name}" 
-                                            Width="200" 
-                                            Height="40"
-                                            FontSize="18" 
-                                            VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"
-                                            IsChecked="{Binding IsChecked}"
-                                            Checked="rbSphereOfUsage_Checked"
-                                            />
-                                </ListViewItem>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-                <Grid 
-                    Grid.Row="2" 
-                    Background="#4a76a8"
-                    >
-                    <TextBlock 
-                        FontFamily="Candara" 
-                        FontSize="32" 
-                        Text="Editing" 
-                        Foreground="White" 
-                        Margin="0 0 0 0"
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"
-                        />
+                                    x:Name="chbTag" 
+                                    Content="{Binding Name}" 
+                                    Width="200" 
+                                    Height="40"
+                                    FontSize="18"
+                                    VerticalAlignment="Top" 
+                                    VerticalContentAlignment="Center"
+                                    IsChecked="{Binding IsChecked}"
+                                    Checked="chbTags_Checked"
+                                    Unchecked="chbTags_Unchecked"
+                                    />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </Grid>
             </Grid>
 
             <Grid 
                 Grid.Column="1" 
-                Width="900" 
-                Height="550" 
-                HorizontalAlignment="Right" 
-                VerticalAlignment="Top"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch"
                 Margin="0 80 0 0"
                 Background="White"
                 >
-                <StackPanel  VerticalAlignment="Top">
-                    <StackPanel 
-                        Orientation="Horizontal" 
-                        Height="50"
-                        >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="60"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
                         <TextBox 
                             x:Name="tbSearchUnits"
                             Text="{x:Static resources:Literals.Placeholder_SearchWordUnits}" 
                             Padding="5 0 0 0"
                             Height="40" 
-                            Width="690" 
-                            Margin="5 0 0 0"
+                            Margin="5 0 5 0"
                             Background="#dfe6ed"
                             Foreground="#4a76a8"
                             VerticalAlignment="Center"
@@ -396,21 +491,21 @@
                             LostFocus="tbSearchUnits_LostFocus" 
                             KeyDown="tbSearchUnits_KeyDown"
                             >
-                            </TextBox>
-                                <Button 
+                        </TextBox>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button 
                             x:Name="btnSearchUnits" 
-                            Width="140" 
-                            Height="40" 
                             Content="Search"
                             Background="#dfe6ed"
                             Foreground="#4a76a8"
                             BorderBrush="{x:Null}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Margin="5 0 0 0"
+                        Height="40"
                             Click="btnSearchUnits_Click"
                             >
                         </Button>
+                    </Grid>
+                    <Grid Grid.Column="2">
                         <Button 
                             x:Name="btnOpenSettings" 
                             Width="55" 
@@ -430,30 +525,78 @@
                             VerticalAlignment="Center"
                                 />
                         </Button>
-                    </StackPanel>
+                    </Grid>
+                </Grid>
 
-
+                <Grid Grid.Row="1">
                     <DataGrid
                         x:Name="dgWordUnits" 
-                        Height="500" 
                         AutoGenerateColumns="False"
                         SelectionUnit="FullRow" 
                         SelectionMode="Single"
-                        VerticalAlignment="Center"
-                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Stretch"
+                        VerticalContentAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
                         CanUserAddRows="False"
                         SelectionChanged="dgWordUnits_SelectionChanged"
                         CellEditEnding="dgWordUnits_CellEditEnding"
-                        DataGridCell.Selected="dgWordUnits_GotFocus"
                         >
                         <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Delete / Edit">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button 
+                                                x:Name="btnDeleteUnit" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left" 
+                                                Background="{x:Null}" 
+                                                BorderBrush="{x:Null}"
+                                                Click="btnDeleteUnit_Click"
+                                                >
+                                                <materialDesign:PackIcon
+                                                    Foreground="#4a76a8" 
+                                                    Kind="DeleteSweep" 
+                                                    Width="20" 
+                                                    Height="20"
+                                                    />
+                                            </Button>
+                                            <Button 
+                                                x:Name="btnEdit" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center" 
+                                                Background="{x:Null}" 
+                                                BorderBrush="{x:Null}"
+                                                Click="btnEdit_Click"
+                                                >
+                                                <materialDesign:PackIcon
+                                                    Foreground="#4a76a8" 
+                                                    Kind="SquareEditOutline" 
+                                                    Width="20" 
+                                                    Height="20"
+                                                    />
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn 
-                                Header="Word"
-                                Width="250"
-                                Binding="{Binding ContentOfUnit}"
+                                Header="Dictionary Unit"
+                                Width="*"
+                                Binding="{Binding ContentOfUnit, Mode=TwoWay}"
+                                IsReadOnly="True"
                                 >
                                 <DataGridTextColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
                                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                                     </Style>
                                 </DataGridTextColumn.HeaderStyle>
@@ -461,15 +604,19 @@
                                     <Style TargetType="TextBlock">
                                         <Setter Property="HorizontalAlignment" Value="Center" />
                                         <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="TextWrapping" Value="Wrap" />
+                                        <Setter Property="FontWeight" Value="DemiBold" />
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
 
                             <DataGridTemplateColumn 
                                 Header="Meaning"
-                                Width="400">
+                                Width="3*">
                                 <DataGridTemplateColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
                                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                                     </Style>
                                 </DataGridTemplateColumn.HeaderStyle>
@@ -477,8 +624,9 @@
                                     <DataTemplate>
                                         <TextBox 
                                             x:Name="tbMeaning" 
-                                            Text="{Binding Path=Meaning}" 
+                                            Text="{Binding Path=Meaning, Mode=TwoWay}" 
                                             TextWrapping="Wrap"
+                                            VerticalContentAlignment="Center"
                                             MaxHeight="70"
                                             />
                                     </DataTemplate>
@@ -486,21 +634,45 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock 
-                                            Text="{Binding Path=Meaning}" 
+                                            Text="{Binding Path=Meaning, Mode=TwoWay}" 
                                             TextWrapping="Wrap"
                                             MaxHeight="70"
+                                            VerticalAlignment="Center"
                                             />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-
-
+                            <DataGridTemplateColumn 
+                                Header="Tags"
+                                Width="0.65*"
+                                IsReadOnly="True">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock 
+                                            Text="{Binding Path=TagsString}" 
+                                            TextWrapping="Wrap"
+                                            MaxHeight="70"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Foreground="#4a76a8" 
+                                            FontWeight="DemiBold"
+                                            />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
                             <DataGridTemplateColumn 
                                 Header="Source"
                                 Width="*">
                                 <DataGridTemplateColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="FontWeight" Value="Bold"/>
                                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                                     </Style>
                                 </DataGridTemplateColumn.HeaderStyle>
@@ -512,11 +684,16 @@
                                                 VerticalAlignment="Center"
                                                 VerticalContentAlignment="Center"
                                                 Visibility="Visible"
-                                                ItemsSource="{Binding Path=AllSources}" 
-                                                SelectedValue="{Binding SourceName}" 
+                                                ItemsSource="{Binding Path=Sources, Mode=TwoWay}" 
+                                            DisplayMemberPath="Name"
+                                                SelectedValue="{Binding SourceId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                            SelectedValuePath="Id"
                                                 Background="White"
                                                 Foreground="#4a76a8"
                                                 Padding="5 0 0 0"
+                                            DropDownOpened="CbWordSources_DropDownOpened"
+                                            DropDownClosed="CbWordSources_DropDownClosed"
+                                            SelectionChanged="cbWordSources_SelectionChanged"
                                             >
                                         </ComboBox>
                                     </DataTemplate>
@@ -524,13 +701,19 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                </StackPanel>
+                    <ProgressBar
+                        x:Name="pbFiltration"
+                        Height="50"
+                        Width="500"
+                        Foreground="#4a76a8"
+                        Visibility="Collapsed"
+                        />
+                </Grid>
             </Grid>
         </Grid>
 
         <Grid 
                 Grid.Column="2" 
-                Width="325" 
                 Height="550" 
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Top"
@@ -539,10 +722,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="275"/>
                 <RowDefinition Height="275"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
             <StackPanel 
                     Grid.Row="0"
                     Height="275"
+                Visibility="Collapsed"
                     >
                 <TextBlock 
                         Text="Synonyms"
@@ -598,8 +784,7 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
-
-            <StackPanel Grid.Row="1" Height="275">
+            <StackPanel Grid.Row="1" Height="275" Visibility="Collapsed">
                 <Line 
                 Height="5" 
                 Width="350" 
@@ -673,6 +858,21 @@
             VerticalAlignment="Top" 
             Background="#4a76a8" 
             Margin="0,0,-0.321,0">
+            <ComboBox 
+                x:Name="cbLanguages" 
+                Height="40"
+                MinWidth="200"
+                DisplayMemberPath="LanguageFullName"
+                SelectedValuePath="Id"
+                Foreground="#4a76a8" 
+                Background="White"
+                FontSize="18"
+                Margin="60 0 0 0"
+                VerticalAlignment="Stretch" 
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                HorizontalContentAlignment="Center"
+                />
             <TextBlock 
                 Foreground="White" 
                 FontFamily="Candara" 
@@ -693,7 +893,6 @@
                 Margin="180,41,225.095,34" 
                 StrokeThickness="100"
                 />
-
             <StackPanel 
                 Orientation="Horizontal" 
                 VerticalAlignment="Bottom" 
@@ -704,139 +903,123 @@
                 <CheckBox 
                     Uid="1" 
                     x:Name="chbAllParts" 
-                    Content="All parts of speech" 
+                    Content="All types of units" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
-                    Checked="chbAllParts_Checked" 
-                    Unchecked="chbAllParts_Unchecked"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="2" 
-                    Checked="chbNouns_Checked" 
-                    Unchecked="chbNouns_Unchecked" 
                     x:Name="chbNouns" 
                     Content="Nouns" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="3" 
-                    Checked="chbVerbs_Checked" 
-                    Unchecked="chbVerbs_Unchecked" 
                     x:Name="chbVerbs" 
                     Content="Verbs" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="4" 
-                    Checked="chbAdjectives_Checked" 
-                    Unchecked="chbAdjectives_Unchecked" 
                     x:Name="chbAdjectives" 
                     Content="Adjectives" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="5" 
-                    Checked="chbContractions_Checked" 
-                    Unchecked="chbContractions_Unchecked" 
                     x:Name="chbContractions" 
                     Content="Contractions" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="6" 
-                    Checked="chbCollocations_Checked" 
-                    Unchecked="chbCollocations_Unchecked" 
                     x:Name="chbCollocations" 
                     Content="Collocations" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="7" 
-                    Checked="chbInterjections_Checked" 
-                    Unchecked="chbInterjections_Unchecked" 
                     x:Name="chbInterjections" 
                     Content="Interjections" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
                     />
                 <CheckBox 
                     Uid="8" 
-                    Checked="chbSentence_Checked" 
-                    Unchecked="chbSentence_Unchecked" 
                     x:Name="chbSentences" 
                     Content="Sentences" 
                     FontFamily="Candara" 
                     FontSize="18" 
                     Foreground="White" 
                     Background="White"
-                    Margin="0 0 18 5" 
+                    Margin="0 0 9 5" 
                     FontWeight="Medium"
+                    IsChecked="True"
+                    />
+                <CheckBox 
+                    Uid="9" 
+                    x:Name="chbMiscellaneous" 
+                    Content="Miscellaneous" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="White" 
+                    Background="White"
+                    Margin="0 0 9 5" 
+                    FontWeight="Medium"
+                    IsChecked="True"
                     />
             </StackPanel>
+            <TextBlock 
+                x:Name="lbNumberOfUnits"
+                        FontFamily="Candara" 
+                        FontSize="28" 
+                        Text="Dict. units: " 
+                        Foreground="White" 
+                        Margin="0 0 75 15"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom"
+                        />
 
-            <StackPanel 
-                VerticalAlignment="Center" 
-                Orientation="Horizontal" 
-                HorizontalAlignment="Right"
-                >
-
-                <materialDesign:PopupBox 
-                    Height="40" 
-                    Width="40" 
-                    PlacementMode="BottomAndAlignRightEdges" 
-                    StaysOpen="False" 
-                    Margin="0 0 0 40" 
-                    Background="{x:Null}"
-                    >
-                    <StackPanel Width="150">
-                        <Button 
-                            x:Name="btnThemes" 
-                            Content="Themes" 
-                            Click="btnThemes_Click"
-                            />
-                        <Button Content="Search options"/>
-                        <Separator/>
-                        <Button 
-                            x:Name="btnExit" 
-                            Content="Exit" 
-                            Click="btnExit_Click"
-                            />
-                    </StackPanel>
-                </materialDesign:PopupBox>
-            </StackPanel>
         </Grid>
 
         <Grid 
@@ -910,14 +1093,15 @@
                             />
                     </StackPanel>
                 </Grid>
-                <Grid Background="#4a76a8">
+                <Grid Background="#4a76a8" VerticalAlignment="Stretch">
                     <StackPanel>
                         <ListView 
                             x:Name="lvInitializedItems" 
                             Visibility="Collapsed" 
-                            Height="163" 
+                            Height="110" 
                             FontWeight="Bold" 
                             FontFamily="Candara" 
+                            MaxHeight="100"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                             ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                             Foreground="Black" 
@@ -926,7 +1110,7 @@
                             SelectionChanged="lvInitializedItems_SelectionChanged" 
                             SelectedIndex="2"
                             >
-                            <ListViewItem VerticalAlignment="Top">
+                            <!--<ListViewItem VerticalAlignment="Top">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox 
                                         x:Name="tbSearch"
@@ -956,10 +1140,10 @@
                                         >
                                     </Button>
                                 </StackPanel>
-                            </ListViewItem>
+                            </ListViewItem>-->
                             <ListViewItem 
                                 x:Name="AddItem" 
-                                Height="50"
+                                Height="45"
                                 >
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon 
@@ -980,7 +1164,7 @@
                             </ListViewItem>
                             <ListViewItem 
                                 x:Name="SelectAll" 
-                                Height="60"
+                                Height="55"
                                 >
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon 
@@ -1000,7 +1184,7 @@
                                     <materialDesign:PackIcon 
                                         x:Name="iconAllChecked" 
                                         Kind="CheckboxMarkedCircle"    
-                                        Margin="50 0 0 0"
+                                        Margin="70 0 0 0"
                                         Foreground="#FF56F526"      
                                         Width="40" Height="40" 
                                         Visibility="Visible"
@@ -1011,9 +1195,11 @@
                         <ListView 
                             x:Name="lvSources" 
                             Visibility="Collapsed" 
-                            Height="660" 
+                            MinHeight="585" 
+                            MaxHeight="740"
                             FontWeight="Bold" 
                             FontFamily="Candara" 
+                            VerticalAlignment="Stretch"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                             Foreground="Black" 
                             Margin="0,0,-0.189,0" 
@@ -1026,20 +1212,22 @@
                                     <ListViewItem 
                                         Height="200" 
                                         IsHitTestVisible="False"
+                                        x:Name="lviSource"
                                         >
-                                        <WrapPanel>
-                                            <StackPanel 
+                                        <WrapPanel VerticalAlignment="Stretch">
+                                            <!--<StackPanel 
                                                 Orientation="Horizontal" 
                                                 HorizontalAlignment="Right">
                                                 <Button 
                                                     x:Name="btnEditSource" 
+                                                    Panel.ZIndex="10"
                                                     Width="60" 
                                                     Height="40" 
                                                     VerticalAlignment="Center" 
                                                     Margin="100 0 0 0" 
                                                     Background="{x:Null}" 
                                                     BorderBrush="{x:Null}"
-                                                    Click="btnOpenList_Click">
+                                                    >
                                                     <materialDesign:PackIcon 
                                                         Foreground="White" 
                                                         Kind="TooltipEdit" 
@@ -1050,12 +1238,13 @@
                                                 <Button 
                                                     x:Name="btnHideSource" 
                                                     Width="60" 
+                                                    Panel.ZIndex="10"
                                                     Height="35" 
                                                     VerticalAlignment="Center" 
                                                     Margin="10 0 0 0" 
                                                     Background="{x:Null}" 
                                                     BorderBrush="{x:Null}"
-                                                    Click="btnOpenList_Click">
+                                                    >
                                                     <materialDesign:PackIcon 
                                                         Foreground="White" 
                                                         Kind="Close" 
@@ -1063,15 +1252,18 @@
                                                         Height="30"
                                                         />
                                                 </Button>
-                                            </StackPanel>
+                                            </StackPanel>-->
 
-                                            <StackPanel>
+                                            <StackPanel x:Name="spSources">
                                                 <TextBlock 
+                                                    x:Name="lbSourceName"
                                                     Text="{Binding Name}" 
+                                                    Foreground="White"
+                                                    Margin="0 0 0 5"
                                                     VerticalAlignment="Center" 
                                                     HorizontalAlignment="Center" 
                                                     FontSize="17" 
-                                                    Margin="0 0 0 0"
+                                                    TextWrapping="{Binding IsSourceWrappingAllowed}"
                                                     />
                                                 <Grid>
                                                     <Image 
@@ -1083,7 +1275,7 @@
                                                         Name="iconChecked" 
                                                         Tag="{Binding Id}" 
                                                         Kind="CheckboxMarkedCircle" 
-                                                        Margin="190 80 0 0" 
+                                                        Margin="190 100 0 0" 
                                                         Foreground="#FF56F526"
                                                         Width="40" 
                                                         Height="40" 

@@ -9,13 +9,14 @@
         xmlns:local="clr-namespace:New_designed_Dictionary"
         xmlns:resources="clr-namespace:New_designed_Dictionary.Resources"
         mc:Ignorable="d"
-        Title="AddWordUnit" Height="820" Width="450"
+        Title="AddWordUnit" Height="920" Width="600"
         WindowStartupLocation="CenterScreen" 
         ResizeMode="NoResize" 
         WindowStyle="None" 
         Background="Black"
         FontFamily="Candara" 
         Loaded="Window_Loaded"
+        MouseLeave="ItemsControlTags_MouseLeave"
         >
     <Grid 
         x:Name="gridAll" 
@@ -30,11 +31,12 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="200"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="100" x:Name="rExample"/>
+                <RowDefinition Height="100" x:Name="rNote"/>
+                <RowDefinition Height="20" x:Name="rlbTags"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -56,9 +58,10 @@
                     Background="#dfe6ed"
                     Foreground="#4a76a8"
                     BorderThickness="0.25"
+                    AcceptsReturn="True"
                     BorderBrush="White"
                     Height="80" 
-                    Width="420" 
+                    Width="570" 
                     FontSize="18" 
                     FontFamily="Candara" 
                     HorizontalContentAlignment="Left" 
@@ -92,8 +95,9 @@
                     Foreground="#4a76a8"
                     BorderThickness="0.25"
                     BorderBrush="White"
+                    AcceptsReturn="True"
                     Height="80" 
-                    Width="420" 
+                    Width="570" 
                     FontSize="18" 
                     FontFamily="Candara" 
                     HorizontalContentAlignment="Left" 
@@ -110,6 +114,11 @@
             <Grid Grid.Row="2" 
                 HorizontalAlignment="Center"
                 >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" Grid.Column="0">
                 <TextBlock 
                     x:Name="lbSource" 
                     Panel.ZIndex="1"
@@ -117,23 +126,57 @@
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Left"
                     FontSize="16" 
-                    Margin="0 5 0 0" 
+                    Margin="10 5 0 0" 
                     MaxWidth="200"
                     Foreground="White" 
                     FontFamily="Candara"
                     />
                 <ComboBox 
                     x:Name="cbSources"
-                    Width="420"
+                    Width="280"
                     Height="30"
                     VerticalAlignment="Center"
                     VerticalContentAlignment="Center"
+                    HorizontalAlignment="Left"
+                    DisplayMemberPath="Name"
                     FontSize="18"
                     Background="White"
                     Foreground="#4a76a8"
-                    Margin="0 30 0 5"
+                    Margin="15 30 0 5"
                     Padding="5 0 0 0"
                     />
+                </Grid>
+            <Grid Grid.Row="2" Grid.Column="1"
+                HorizontalAlignment="Center"
+                >
+                <TextBlock 
+                    x:Name="lbLanguage" 
+                    Panel.ZIndex="1"
+                    Text="{x:Static resources:Literals.Label_Language}" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left"
+                    FontSize="16" 
+                    Margin="-5 5 0 0" 
+                    MaxWidth="200"
+                    Foreground="White" 
+                    FontFamily="Candara"
+                    />
+                <ComboBox 
+                    x:Name="cbLanguages"
+                    Width="280"
+                    Height="30"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    DisplayMemberPath="LanguageFullName"
+                    SelectedValuePath="Id"
+                    HorizontalAlignment="Left"
+                    FontSize="18"
+                    Background="White"
+                    Foreground="#4a76a8"
+                    Margin="5 30 15 5"
+                    Padding="5 0 0 0"
+                    />
+                </Grid>
             </Grid>
             <Grid Grid.Row="3" 
                 HorizontalAlignment="Center"
@@ -141,27 +184,44 @@
                 <TextBlock 
                     x:Name="lbPartOfSpeech" 
                     Panel.ZIndex="1"
-                    Text="{x:Static resources:Literals.Label_PartOfSpeech}" 
+                    Text="{x:Static resources:Literals.Label_TypeOfUnit}" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Left"
                     FontSize="16" 
-                    Margin="0 5 0 0" 
+                    Margin="10 10 0 0" 
                     MaxWidth="200"
                     Foreground="White" 
                     FontFamily="Candara"
                     />
-                <ComboBox 
-                    x:Name="cbPartsOfSpeech"
-                    Width="420"
-                    Height="30"
-                    VerticalAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="18"
-                    Background="White"
-                    Foreground="#4a76a8"
-                    Margin="0 30 0 5"
-                    Padding="5 0 0 0"
-                    />
+                <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                    Height="130"
+                    Margin="0 30 0 0"
+                    >
+                    <ItemsControl 
+                    x:Name="itemControlTypesOfUnit"
+                        Width="550"
+                    >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox  
+                                x:Name="TypeOfUnit"
+                                Content="{Binding Path=Name}"
+                                FontFamily="Candara" 
+                                FontSize="19" 
+                                Margin="25 5 0 0"
+                                Foreground="White" 
+                                Background="White"
+                                />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
             </Grid>
             <Grid Grid.Row="4">
                 <TextBlock 
@@ -183,6 +243,7 @@
                     Foreground="#4a76a8"
                     BorderThickness="0.25"
                     BorderBrush="White"
+                    AcceptsReturn="True"
                     Height="80" 
                     Width="420" 
                     FontSize="18" 
@@ -218,6 +279,7 @@
                     Foreground="#4a76a8"
                     BorderThickness="0.25"
                     BorderBrush="White"
+                    AcceptsReturn="True"
                     Height="80" 
                     Width="420" 
                     FontSize="18" 
@@ -241,23 +303,27 @@
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left"
                         FontSize="16" 
-                        Margin="10 10 0 0" 
+                        Margin="10 0 0 0" 
                         MaxWidth="100"
                         Foreground="White" 
                         FontFamily="Candara"
                         />
+            </Grid>
+            <Grid Grid.Row="7">
                 <ScrollViewer 
                     VerticalScrollBarVisibility="Auto"
-                    Height="120"
                     Margin="0 30 0 0"
+                    Panel.ZIndex="2"
+                    MouseEnter="ItemsControlTags_MouseEnter"
+                    MouseLeave="ItemsControlTags_MouseLeave"
                     >
                     <ItemsControl 
                     x:Name="itemsControlTags"
-                        Width="450"
+                        Width="600"
                     >
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="2" IsItemsHost="True"/>
+                            <UniformGrid Columns="3" IsItemsHost="True"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
@@ -275,8 +341,27 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 </ScrollViewer>
+                <Button 
+                        x:Name="btnAddTag" 
+                        Panel.ZIndex="3"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Right"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Width="60" 
+                        Height="30"
+                        FontSize="19" 
+                    Click="btnAddTag_Click"
+                            >
+                    <materialDesign:PackIcon 
+                                Foreground="White" 
+                                Kind="AddBox" 
+                                Width="25" 
+                                Height="25"
+                                />
+                </Button>
             </Grid>
-            <Grid Grid.Row="7" 
+            <Grid Grid.Row="8" 
                 Background="#4a76a8"
                 >
                 <Grid.ColumnDefinitions>
@@ -309,8 +394,8 @@
                     Margin="0,8,10.207,6.811" 
                     FontSize="19" 
                     HorizontalAlignment="Right" 
-                    Click="btnCancel_Click" 
                     Grid.Column="1"
+                    Click="btnCancel_Click" 
                     />
             </Grid>
 

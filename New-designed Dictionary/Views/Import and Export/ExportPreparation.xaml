@@ -1,0 +1,429 @@
+﻿<Window x:Class="New_designed_Dictionary.Import_and_Export.ExportPreparation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:New_designed_Dictionary.Import_and_Export"
+        xmlns:resources="clr-namespace:New_designed_Dictionary.Resources"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ExportPreparation" 
+        Height="800" 
+        Width="1010"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel 
+                Orientation="Horizontal" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Center" 
+                Margin="0,0,12.529,0" 
+                Width="1000"
+                >
+                <CheckBox 
+                    Uid="1" 
+                    x:Name="chbAllParts" 
+                    Content="All types of units" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="9 0 3 5" 
+                    FontWeight="Medium"
+                    Checked="chbAllParts_Checked" 
+                    Unchecked="chbAllParts_Unchecked"
+                    />
+                <CheckBox 
+                    Uid="2" 
+                    Checked="chbNouns_Checked" 
+                    Unchecked="chbNouns_Unchecked" 
+                    x:Name="chbNouns" 
+                    Content="Nouns" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="3" 
+                    Checked="chbVerbs_Checked" 
+                    Unchecked="chbVerbs_Unchecked" 
+                    x:Name="chbVerbs" 
+                    Content="Verbs" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="4" 
+                    Checked="chbAdjectives_Checked" 
+                    Unchecked="chbAdjectives_Unchecked" 
+                    x:Name="chbAdjectives" 
+                    Content="Adjectives" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="5" 
+                    Checked="chbContractions_Checked" 
+                    Unchecked="chbContractions_Unchecked" 
+                    x:Name="chbContractions" 
+                    Content="Contractions" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="6" 
+                    Checked="chbCollocations_Checked" 
+                    Unchecked="chbCollocations_Unchecked" 
+                    x:Name="chbCollocations" 
+                    Content="Collocations" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="7" 
+                    Checked="chbInterjections_Checked" 
+                    Unchecked="chbInterjections_Unchecked" 
+                    x:Name="chbInterjections" 
+                    Content="Interjections" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="8" 
+                    Checked="chbSentence_Checked" 
+                    Unchecked="chbSentence_Unchecked" 
+                    x:Name="chbSentences" 
+                    Content="Sentences" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 3 5" 
+                    FontWeight="Medium"
+                    />
+                <CheckBox 
+                    Uid="9" 
+                    Checked="chbMiscellaneous_Checked" 
+                    Unchecked="chbMiscellaneous_Unchecked" 
+                    x:Name="chbMiscellaneous" 
+                    Content="Miscellaneous" 
+                    FontFamily="Candara" 
+                    FontSize="18" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="0 0 0 5" 
+                    FontWeight="Medium"
+                    />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+
+            <TextBlock 
+                        x:Name="lbSpheresOfUsage" 
+                        Panel.ZIndex="1"
+                        Text="{x:Static resources:Literals.Label_Tags}" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        FontSize="20" 
+                        Margin="100 5 0 0" 
+                        MaxWidth="100"
+                        Foreground="#4a76a8" 
+                        FontFamily="Candara"
+                        />
+            <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                    Height="100"
+                    Margin="0 30 0 0"
+                    >
+                <ItemsControl 
+                    x:Name="itemsControlTags"
+                        Width="800"
+                    >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="5" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox  
+                                x:Name="chbTag"
+                                Content="{Binding Path=Name}"
+                                FontFamily="Candara" 
+                                FontSize="19" 
+                                IsChecked="{Binding IsChecked}"
+                                Margin="0 0 0 0"
+                                Foreground="#4a76a8" 
+                                Background="#FF4996EE"
+                                Checked="chbTags_Checked"
+                                Unchecked="chbTags_Unchecked"
+                                />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel 
+                        Orientation="Horizontal" 
+                        Height="50"
+                        >
+                <TextBox 
+                            x:Name="tbSearchUnits"
+                            Text="{x:Static resources:Literals.Placeholder_SearchWordUnits}" 
+                            Padding="5 0 0 0"
+                            Height="40" 
+                            Width="760" 
+                            Margin="5 0 0 0"
+                            Background="#dfe6ed"
+                            Foreground="#4a76a8"
+                            VerticalAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            FontSize="16"
+                            Visibility="Visible" 
+                            GotFocus="tbSearchUnits_GotFocus"
+                            LostFocus="tbSearchUnits_LostFocus" 
+                            KeyDown="tbSearchUnits_KeyDown"
+                            >
+                </TextBox>
+                <Button 
+                            x:Name="btnSearchUnits" 
+                            Width="180" 
+                            Height="40" 
+                            Content="Search"
+                            Background="#dfe6ed"
+                            Foreground="#4a76a8"
+                            BorderBrush="{x:Null}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"
+                            Click="btnSearchUnits_Click"
+                            >
+                </Button>
+                <Button 
+                            x:Name="btnOpenSettings" 
+                            Width="55" 
+                            Height="50" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}"
+                            Click="btnOpenSettings_Click"
+                            >
+                    <materialDesign:PackIcon 
+                                Foreground="#4a76a8" 
+                                Kind="Settings" 
+                                Width="25" 
+                                Height="35"
+                                Margin="0 0 0 0"
+                            VerticalAlignment="Center"
+                                />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <DataGrid
+                x:Name="dgWordUnits" 
+                Height="450" 
+                AutoGenerateColumns="False"
+                SelectionUnit="FullRow" 
+                SelectionMode="Single"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Center"
+                CanUserAddRows="False"
+                IsReadOnly="True"
+                >
+                <DataGrid.Columns>
+                    <DataGridTextColumn 
+                                Header="Dictionary Unit"
+                                Width="250"
+                                Binding="{Binding ContentOfUnit, Mode=TwoWay}"
+                                IsReadOnly="True"
+                                >
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="TextWrapping" Value="Wrap" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTemplateColumn 
+                                Header="Meaning"
+                                Width="550">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox 
+                                            x:Name="tbMeaning" 
+                                            Text="{Binding Path=Meaning, Mode=TwoWay}" 
+                                            TextWrapping="Wrap"
+                                            VerticalContentAlignment="Center"
+                                            MaxHeight="70"
+                                            />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock 
+                                            Text="{Binding Path=Meaning, Mode=TwoWay}" 
+                                            TextWrapping="Wrap"
+                                            MaxHeight="70"
+                                            VerticalAlignment="Center"
+                                            />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn 
+                                Header="Source"
+                                Width="*">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    x:Name="cbWordSources"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Visibility="Visible"
+                                    ItemsSource="{Binding Path=AllSources, Mode=TwoWay}" 
+                                    SelectedValue="{Binding SourceName, Mode=TwoWay}" 
+                                    Background="White"
+                                    Foreground="#4a76a8"
+                                    Padding="5 0 0 0"
+                                    IsEnabled="False"
+                                    >
+                                </ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="4" 
+              Background="White">
+            <StackPanel VerticalAlignment="Center">
+            <CheckBox 
+                    x:Name="chbGroupBySources" 
+                    Content="Group by sources" 
+                    FontFamily="Candara" 
+                    FontSize="20" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="20 0 9 0" 
+                    FontWeight="Medium"
+                    />
+            <CheckBox 
+                    x:Name="chbOpenAfterExport" 
+                    Content="Open after export" 
+                    FontFamily="Candara" 
+                    FontSize="20" 
+                    Foreground="#4a76a8" 
+                    Background="#FF4996EE"
+                    Margin="20 5 9 0" 
+                    FontWeight="Medium"
+                    />
+            </StackPanel>
+            <TextBox 
+                x:Name="tbTitle"
+                Margin="0 0 0 10"
+                materialDesign:HintAssist.Hint="TITLE" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="19"
+                Height="50"
+                Width="500"
+                VerticalContentAlignment="Center"
+                FontFamily="Candara"
+                FontWeight="DemiBold"
+                Background="White"
+                Foreground="#4a76a8" 
+                Padding="5 0 0 0"
+                />
+        </Grid>
+        <Grid Grid.Row="5" 
+              Background="#4a76a8">
+            <Button 
+                x:Name ="Finish" 
+                Background="#dfe6ed" 
+                Foreground="#4a76a8" 
+                Content="OK" 
+                VerticalAlignment="Center" 
+                Width="150" 
+                Height="35" 
+                Margin="0,8,170.207,6.811" 
+                FontSize="19" 
+                HorizontalAlignment="Right" 
+                Visibility="Visible" 
+                Grid.ColumnSpan="2"
+                Click="Finish_Click"
+                />
+            <Button 
+                x:Name="btnCancel" 
+                Background="#dfe6ed" 
+                Foreground="#4a76a8" 
+                Content="Cancel" 
+                VerticalAlignment="Center" 
+                Width="150" 
+                Height="35" 
+                Margin="0,8,10.207,6.811" 
+                FontSize="19" 
+                HorizontalAlignment="Right" 
+                Grid.Column="1"
+                Click="btnCancel_Click" 
+                />
+        </Grid>
+    </Grid>
+</Window>

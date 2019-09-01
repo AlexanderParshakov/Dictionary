@@ -9,20 +9,19 @@
 
 namespace New_designed_Dictionary
 {
-    using New_designed_Dictionary.ViewModels;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using VDS.RDF.Query;
-
+    
     public partial class WordUnit
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WordUnit()
         {
+            this.Users = new HashSet<User>();
+            this.Languages = new HashSet<Language>();
             this.Sources = new HashSet<Source>();
-            this.PartsOfSpeeches = new HashSet<PartsOfSpeech>();
             this.Tags = new HashSet<Tag>();
+            this.UnitTypes = new HashSet<UnitType>();
         }
     
         public int Id { get; set; }
@@ -30,62 +29,18 @@ namespace New_designed_Dictionary
         public string Meaning { get; set; }
         public string Example { get; set; }
         public string Note { get; set; }
-        public bool IsFormal { get; set; }
+        public Nullable<bool> IsFormal { get; set; }
+        public Nullable<System.DateTime> Datetime { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Language> Languages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Source> Sources { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PartsOfSpeech> PartsOfSpeeches { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tag> Tags { get; set; }
-
-        public static VMWordUnit WordUnitFromQueryResult(SparqlResult r)
-        {
-            VMWordUnit wu = new VMWordUnit();
-            List<string> allSources = new List<string>();
-            foreach (var v in r.ToList())
-            {
-                switch (v.Key)
-                {
-                    case "word":
-                        {
-                            wu.ContentOfUnit = v.Value.ToString().Replace(Resources.Paths.Ontology_Base, "");
-                            break;
-                        }
-                    case "meaning":
-                        {
-                            wu.Meaning = v.Value.ToString().Replace(Resources.Paths.Ontology_Base, "").Replace("_", " ");
-                            break;
-                        }
-                    case "example":
-                        {
-                            wu.Example = v.Value.ToString().Replace(Resources.Paths.Ontology_Base, "").Replace("_", " ").Replace("''", "\"");
-                            break;
-                        }
-                    case "note":
-                        {
-                            wu.Note = v.Value.ToString().Replace(Resources.Paths.Ontology_Base, "").Replace("_", " ").Replace("''", "");
-                            break;
-                        }
-                    case "source":
-                        {
-                            wu.SourceName = v.Value.ToString().Replace(Resources.Paths.Ontology_Base, "").Replace("_", " ").Replace("'", "");
-                            break;
-                        }
-                }
-            }
-
-            foreach (SparqlResult sr in (SparqlResultSet)OntologyProcessor.GetIndividualQueryResults(Resources.Queries.Query_Indiv_Sources))
-            {
-                foreach (var variable in sr.ToList())
-                {
-                    allSources.Add(variable.Value.ToString().Replace(Resources.Paths.Ontology_Base, "").Replace("_", " ").Replace("'", ""));
-                }
-            }
-
-            wu.AllSources = allSources;
-
-            return wu;
-        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UnitType> UnitTypes { get; set; }
     }
 }

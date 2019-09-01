@@ -1,0 +1,86 @@
+﻿<Window x:Class="New_designed_Dictionary.Modals.AddTag"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:New_designed_Dictionary.Modals"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="{x:Null}"
+        Title="AddTag" 
+        Height="170" 
+        Width="400"
+        Loaded="Window_Loaded"
+        >
+    <Border Background="#4a76a8" CornerRadius="15" Grid.RowSpan="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock 
+                Text="Adding a tag..." 
+                FontSize="21"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                />
+            </Grid>
+            <Grid Grid.Row="1" Background="White">
+                <TextBox 
+                x:Name="tbTag"
+                Margin="0 0 0 10"
+                materialDesign:HintAssist.Hint="Tag name" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="19"
+                VerticalContentAlignment="Center"
+                    VerticalAlignment="Bottom"
+                FontFamily="Candara"
+                FontWeight="DemiBold"
+                Background="White"
+                Padding="5 0 0 0"
+                    KeyDown="TbTag_KeyDown"
+                />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Separator VerticalAlignment="Top" Background="White"/>
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    >
+                    <Button 
+                    x:Name="btnOK" 
+                    FontSize="21" 
+                    Width="150" 
+                    Height="35" 
+                    Content="OK"
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Margin="15 2 10 0" 
+                        Click="btnOK_Click"
+                    />
+                    <Button 
+                    x:Name="btnCancel" 
+                    FontSize="21" 
+                    Width="150" 
+                    Height="35" 
+                    Content="Cancel"
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    Margin="0 2 10 0" 
+                    Click="btnCancel_Click"
+                    />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

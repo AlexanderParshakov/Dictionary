@@ -79,6 +79,15 @@ namespace New_designed_Dictionary.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#DictionaryUnit.
+        /// </summary>
+        public static string Ontology_DictionaryUnit {
+            get {
+                return ResourceManager.GetString("Ontology_DictionaryUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#Example.
         /// </summary>
         public static string Ontology_Example {
@@ -88,20 +97,20 @@ namespace New_designed_Dictionary.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#PartOfSpeech.
+        ///   Looks up a localized string similar to \My Real Knowledge Base.owl.
         /// </summary>
-        public static string Ontology_PartOfSpeech {
+        public static string Ontology_Filename {
             get {
-                return ResourceManager.GetString("Ontology_PartOfSpeech", resourceCulture);
+                return ResourceManager.GetString("Ontology_Filename", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Folders\SampleSave.owl.
+        ///   Looks up a localized string similar to http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#NounClass.
         /// </summary>
-        public static string Ontology_Path {
+        public static string Ontology_Noun {
             get {
-                return ResourceManager.GetString("Ontology_Path", resourceCulture);
+                return ResourceManager.GetString("Ontology_Noun", resourceCulture);
             }
         }
         
@@ -187,11 +196,11 @@ namespace New_designed_Dictionary.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#WordUnit.
+        ///   Looks up a localized string similar to http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#TypeOfUnit.
         /// </summary>
-        public static string Ontology_WordUnit {
+        public static string Ontology_TypeOfUnit {
             get {
-                return ResourceManager.GetString("Ontology_WordUnit", resourceCulture);
+                return ResourceManager.GetString("Ontology_TypeOfUnit", resourceCulture);
             }
         }
         

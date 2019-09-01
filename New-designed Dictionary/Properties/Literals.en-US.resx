@@ -117,45 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PREFIXES" xml:space="preserve">
-    <value>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
-PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt; 
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; 
-PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; 
-PREFIX vocabulary: &lt;http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#&gt;</value>
+  <data name="CheckBox_SearchByExample" xml:space="preserve">
+    <value>example(s)</value>
   </data>
-  <data name="Query_Indiv_Sources" xml:space="preserve">
-    <value>SELECT ?source
-	WHERE { ?source a vocabulary:UsedSource.
-}</value>
+  <data name="CheckBox_SearchByMeaning" xml:space="preserve">
+    <value>meaning(s)</value>
   </data>
-  <data name="Query_Indiv_Tags" xml:space="preserve">
-    <value>SELECT ?tags
-	WHERE { ?tags a vocabulary:Tag.
-}</value>
+  <data name="CheckBox_SearchByNote" xml:space="preserve">
+    <value>note(s)</value>
   </data>
-  <data name="Query_Indiv_WordUnit" xml:space="preserve">
-    <value>SELECT *
-	WHERE { ?word a vocabulary:WordUnit.
-	OPTIONAL { ?word vocabulary:HasMeaning ?meaning . }
-	OPTIONAL { ?word vocabulary:HasExample ?example . }
-	OPTIONAL { ?word vocabulary:HasNote ?note . }
-	OPTIONAL { ?word vocabulary:IsProvidedBy ?source . }
-	FILTER(REGEX(STR(?word), "X", "i"))
-}</value>
+  <data name="CheckBox_SearchBySource" xml:space="preserve">
+    <value>source(s)</value>
   </data>
-  <data name="Query_Indiv_WordUnit_By_Name" xml:space="preserve">
-    <value>SELECT *
-	WHERE { ?word a vocabulary:WordUnit.
-	OPTIONAL { ?word vocabulary:HasMeaning ?meaning . }
-	OPTIONAL { ?word vocabulary:HasExample ?example . }
-	OPTIONAL { ?word vocabulary:HasNote ?note . }
-	FILTER(REGEX(STR(?word), "X", "i"))
-}</value>
+  <data name="CheckBox_SearchByTag" xml:space="preserve">
+    <value>tag(s)</value>
   </data>
-  <data name="Query_Indiv_WordUnit_Name" xml:space="preserve">
-    <value>SELECT ?word
-	WHERE { ?word a vocabulary:WordUnit.
-}</value>
+  <data name="CheckBox_SearchOnTyping" xml:space="preserve">
+    <value>Search while typing</value>
+  </data>
+  <data name="Label_AddedSuccessfully" xml:space="preserve">
+    <value>Successfully added</value>
+  </data>
+  <data name="Label_Contents" xml:space="preserve">
+    <value>Contents:</value>
+  </data>
+  <data name="Label_Example" xml:space="preserve">
+    <value>Example:</value>
+  </data>
+  <data name="Label_Export_Title" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="Label_Meaning" xml:space="preserve">
+    <value>Meaning:</value>
+  </data>
+  <data name="Label_Note" xml:space="preserve">
+    <value>Note:</value>
+  </data>
+  <data name="Label_Source" xml:space="preserve">
+    <value>Source:</value>
+  </data>
+  <data name="Label_Tags" xml:space="preserve">
+    <value>Tags:</value>
+  </data>
+  <data name="Label_TypeOfUnit" xml:space="preserve">
+    <value>Type of unit:</value>
+  </data>
+  <data name="Placeholder_Contents" xml:space="preserve">
+    <value>Input the contents...</value>
+  </data>
+  <data name="Placeholder_Example" xml:space="preserve">
+    <value>Input the example...</value>
+  </data>
+  <data name="Placeholder_Meaning" xml:space="preserve">
+    <value>Input the meaning...</value>
+  </data>
+  <data name="Placeholder_Note" xml:space="preserve">
+    <value>Input your note...</value>
+  </data>
+  <data name="Placeholder_SearchSources" xml:space="preserve">
+    <value>Search sources...</value>
+  </data>
+  <data name="Placeholder_SearchWordUnits" xml:space="preserve">
+    <value>Search word units...</value>
+  </data>
+  <data name="Section_Id_IncludeProperties" xml:space="preserve">
+    <value>Include in search:</value>
+  </data>
+  <data name="Title_Main_TopMiddle" xml:space="preserve">
+    <value>My Own Dictionary</value>
+  </data>
+  <data name="Title_Modal_SearchSettings" xml:space="preserve">
+    <value>Search settings</value>
   </data>
 </root>

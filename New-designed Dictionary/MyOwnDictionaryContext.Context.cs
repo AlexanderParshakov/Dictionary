@@ -25,12 +25,13 @@ namespace New_designed_Dictionary
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<PartsOfSpeech> PartsOfSpeeches { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Theme> Themes { get; set; }
-        public virtual DbSet<WordUnit> WordUnits { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Theme> Themes { get; set; }
+        public virtual DbSet<UnitType> UnitTypes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<WordUnit> WordUnits { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using New_designed_Dictionary.HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,9 +24,13 @@ namespace New_designed_Dictionary
     /// </summary>
     public partial class AddSource : Window
     {
-        static MyOwnDictionaryContext Context = new MyOwnDictionaryContext();
+        static string Destination = Directory.GetCurrentDirectory() + @"\SourcePictures";
         static string FileName = "";
         // FUNCTIONS
+        private string StringWithoutStopChars(string stringToProcess)
+        {
+            return stringToProcess.Replace("\\", "").Replace("/", "").Replace("*", "").Replace("[", "").Replace("]", "").Replace(":", "").Replace("?", "");
+        }
         private void CheckNameInput()
         {
             int Checks = 0;
@@ -76,13 +81,20 @@ namespace New_designed_Dictionary
 
         private void AddTheSource()
         {
-            using (Context)
+            Source s = new Source();
+            s.Name = tbSourceName.Text;
+            s.Users.Add(DBComm.Context.Users.SingleOrDefault(so => so.Login == DBComm.GlobalUser.Login));
+            if (DBComm.Context.Sources.SingleOrDefault(x => x.Name == s.Name) == null)
             {
-                Source s = new Source();
-                s.Name = tbSourceName.Text;
                 s.Picture = File.ReadAllBytes(FileName);
-                Context.Sources.Add(s);
-                Context.SaveChanges();
+                DBComm.Context.Sources.Add(s);
+                DBComm.Context.SaveChanges();
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("A source with such a name already exists.");
             }
         }
         // FUNCTIONS
@@ -124,7 +136,6 @@ namespace New_designed_Dictionary
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddTheSource();
-            this.Close();
         }
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)

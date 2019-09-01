@@ -10,5 +10,6 @@ namespace New_designed_Dictionary.ViewModels
     public partial class VMSource : Source
     {
         public BitmapImage ImageData { get; set; }
+        public string Extenstion { get; set; }
     }
 }

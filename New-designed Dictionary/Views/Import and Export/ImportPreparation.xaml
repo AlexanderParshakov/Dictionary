@@ -1,0 +1,113 @@
+﻿<Window x:Class="New_designed_Dictionary.Import_and_Export.ImportPreparation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:New_designed_Dictionary"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ImportPreparation" Height="190" Width="500" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        WindowStyle="None" 
+        Background="{x:Null}"
+        FontFamily="Candara" 
+        AllowsTransparency="True"
+        >
+    <Border Background="#4a76a8" CornerRadius="15" Grid.RowSpan="3">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0">
+                <TextBlock 
+                Text="Preparing for import..." 
+                FontSize="21"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                />
+            </Grid>
+            <Grid Grid.Row="1">
+                <CheckBox 
+                x:Name="chbPreEdit" 
+                Content="Pre-edit dictionary units before finishing (recommended)" 
+                FontFamily="Candara" 
+                FontSize="18" 
+                    IsChecked="True"
+                Foreground="White" 
+                Background="White"
+                Margin="10 3 0 0" 
+                FontWeight="Medium"
+                />
+                <Separator VerticalAlignment="Top" Background="White"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Separator VerticalAlignment="Top" Background="White"/>
+                <TextBlock 
+                    x:Name="lbFilename"
+                    Text="Filename:" 
+                    FontSize="14"
+                    Foreground="White"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10 0 0 0"
+                    MaxWidth="320"
+                    />
+                <Button 
+                    x:Name="btnBrowse" 
+                    FontSize="21" 
+                    Width="150" 
+                    Height="35" 
+                    Content="Browse..."
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Margin="15 2 10 0" 
+                    Click="btnBrowse_Click"
+                    />
+            </Grid>
+        <Grid Grid.Row="3">
+                <Separator VerticalAlignment="Top" Background="White"/>
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    >
+                    <Button 
+                    x:Name="btnOK" 
+                    FontSize="21" 
+                    Width="150" 
+                    Height="35" 
+                    Content="Start"
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                        IsEnabled="False"
+                    Margin="15 2 10 0" 
+                        Click="btnOK_Click"
+                    />
+                    <Button 
+                    x:Name="btnCancel" 
+                    FontSize="21" 
+                    Width="150" 
+                    Height="35" 
+                    Content="Cancel"
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    Margin="0 2 10 0" 
+                    Click="btnCancel_Click"
+                    />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

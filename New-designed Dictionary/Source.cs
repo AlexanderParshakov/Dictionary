@@ -17,6 +17,7 @@ namespace New_designed_Dictionary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Source()
         {
+            this.Users = new HashSet<User>();
             this.WordUnits = new HashSet<WordUnit>();
         }
     
@@ -24,6 +25,8 @@ namespace New_designed_Dictionary
         public string Name { get; set; }
         public byte[] Picture { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WordUnit> WordUnits { get; set; }
     }

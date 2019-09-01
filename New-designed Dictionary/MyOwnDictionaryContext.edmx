@@ -5,36 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MyOwnDictionaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="PartsOfSpeech">
+        <EntityType Name="Languages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="relSourcesWordUnit">
-          <Key>
-            <PropertyRef Name="SourceId" />
-            <PropertyRef Name="WordUnitId" />
-          </Key>
-          <Property Name="SourceId" Type="int" Nullable="false" />
-          <Property Name="WordUnitId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="relWordUnitPartOfSpeech">
-          <Key>
-            <PropertyRef Name="WordUnitId" />
-            <PropertyRef Name="PartOfSpeechId" />
-          </Key>
-          <Property Name="WordUnitId" Type="int" Nullable="false" />
-          <Property Name="PartOfSpeechId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="relWordUnitSphereOfUsage">
-          <Key>
-            <PropertyRef Name="WordUnitId" />
-            <PropertyRef Name="SphereOfUsageId" />
-          </Key>
-          <Property Name="WordUnitId" Type="int" Nullable="false" />
-          <Property Name="SphereOfUsageId" Type="int" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Sources">
           <Key>
@@ -73,223 +50,447 @@
           <Property Name="IsSelected" Type="bit" Nullable="false" />
           <Property Name="Picture" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="UnitTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsChecked" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserRelLanguage">
+          <Key>
+            <PropertyRef Name="UserLogin" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="UserLogin" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRelSource">
+          <Key>
+            <PropertyRef Name="UserLogin" />
+            <PropertyRef Name="SourceId" />
+          </Key>
+          <Property Name="UserLogin" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRelTag">
+          <Key>
+            <PropertyRef Name="UserLogin" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="UserLogin" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRelWordUnit">
+          <Key>
+            <PropertyRef Name="WordUnitId" />
+            <PropertyRef Name="UserLogin" />
+          </Key>
+          <Property Name="WordUnitId" Type="int" Nullable="false" />
+          <Property Name="UserLogin" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Login" />
           </Key>
           <Property Name="Login" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastUsedLanguage" Type="int" />
+        </EntityType>
+        <EntityType Name="WordUnitRelLanguage">
+          <Key>
+            <PropertyRef Name="WordUnitId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="WordUnitId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WordUnitRelSource">
+          <Key>
+            <PropertyRef Name="SourceId" />
+            <PropertyRef Name="WordUnitId" />
+          </Key>
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="WordUnitId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WordUnitRelTag">
+          <Key>
+            <PropertyRef Name="WordUnitId" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="WordUnitId" Type="int" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WordUnitRelUnitTypes">
+          <Key>
+            <PropertyRef Name="WordUnitId" />
+            <PropertyRef Name="UnitTypeId" />
+          </Key>
+          <Property Name="WordUnitId" Type="int" Nullable="false" />
+          <Property Name="UnitTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WordUnits">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContentOfUnit" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Meaning" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Example" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Note" Type="nvarchar" MaxLength="1000" Nullable="false" />
-          <Property Name="IsFormal" Type="bit" Nullable="false" />
+          <Property Name="ContentOfUnit" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Meaning" Type="nvarchar" MaxLength="200" />
+          <Property Name="Example" Type="nvarchar" MaxLength="400" />
+          <Property Name="Note" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsFormal" Type="bit" />
+          <Property Name="Datetime" Type="datetime" />
         </EntityType>
         <Association Name="FK_relSourcesWordUnit_Sources">
           <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
-          <End Role="relSourcesWordUnit" Type="Self.relSourcesWordUnit" Multiplicity="*" />
+          <End Role="WordUnitRelSource" Type="Self.WordUnitRelSource" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sources">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="relSourcesWordUnit">
+            <Dependent Role="WordUnitRelSource">
               <PropertyRef Name="SourceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_relSourcesWordUnit_WordUnits">
           <End Role="WordUnits" Type="Self.WordUnits" Multiplicity="1" />
-          <End Role="relSourcesWordUnit" Type="Self.relSourcesWordUnit" Multiplicity="*" />
+          <End Role="WordUnitRelSource" Type="Self.WordUnitRelSource" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WordUnits">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="relSourcesWordUnit">
+            <Dependent Role="WordUnitRelSource">
               <PropertyRef Name="WordUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_relWordUnitPartOfSpeech_PartsOfSpeech">
-          <End Role="PartsOfSpeech" Type="Self.PartsOfSpeech" Multiplicity="1" />
-          <End Role="relWordUnitPartOfSpeech" Type="Self.relWordUnitPartOfSpeech" Multiplicity="*" />
+          <End Role="UnitTypes" Type="Self.UnitTypes" Multiplicity="1" />
+          <End Role="WordUnitRelUnitTypes" Type="Self.WordUnitRelUnitTypes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PartsOfSpeech">
+            <Principal Role="UnitTypes">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="relWordUnitPartOfSpeech">
-              <PropertyRef Name="PartOfSpeechId" />
+            <Dependent Role="WordUnitRelUnitTypes">
+              <PropertyRef Name="UnitTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_relWordUnitPartOfSpeech_WordUnits">
           <End Role="WordUnits" Type="Self.WordUnits" Multiplicity="1" />
-          <End Role="relWordUnitPartOfSpeech" Type="Self.relWordUnitPartOfSpeech" Multiplicity="*" />
+          <End Role="WordUnitRelUnitTypes" Type="Self.WordUnitRelUnitTypes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WordUnits">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="relWordUnitPartOfSpeech">
+            <Dependent Role="WordUnitRelUnitTypes">
               <PropertyRef Name="WordUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_relWordUnitSphereOfUsage_SpheresOfUsage">
           <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
-          <End Role="relWordUnitSphereOfUsage" Type="Self.relWordUnitSphereOfUsage" Multiplicity="*" />
+          <End Role="WordUnitRelTag" Type="Self.WordUnitRelTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tags">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="relWordUnitSphereOfUsage">
-              <PropertyRef Name="SphereOfUsageId" />
+            <Dependent Role="WordUnitRelTag">
+              <PropertyRef Name="TagId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_relWordUnitSphereOfUsage_WordUnits">
           <End Role="WordUnits" Type="Self.WordUnits" Multiplicity="1" />
-          <End Role="relWordUnitSphereOfUsage" Type="Self.relWordUnitSphereOfUsage" Multiplicity="*" />
+          <End Role="WordUnitRelTag" Type="Self.WordUnitRelTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WordUnits">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="relWordUnitSphereOfUsage">
+            <Dependent Role="WordUnitRelTag">
+              <PropertyRef Name="WordUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelLanguage_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="UserRelLanguage" Type="Self.UserRelLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRelLanguage">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelLanguage_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRelLanguage" Type="Self.UserRelLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="UserRelLanguage">
+              <PropertyRef Name="UserLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelSource_Sources">
+          <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
+          <End Role="UserRelSource" Type="Self.UserRelSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sources">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRelSource">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelSource_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRelSource" Type="Self.UserRelSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="UserRelSource">
+              <PropertyRef Name="UserLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelTag_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="UserRelTag" Type="Self.UserRelTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRelTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelTag_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRelTag" Type="Self.UserRelTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="UserRelTag">
+              <PropertyRef Name="UserLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WordUnitRelLanguage_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="WordUnitRelLanguage" Type="Self.WordUnitRelLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WordUnitRelLanguage">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WordUnitRelLanguage_WordUnits">
+          <End Role="WordUnits" Type="Self.WordUnits" Multiplicity="1" />
+          <End Role="WordUnitRelLanguage" Type="Self.WordUnitRelLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WordUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WordUnitRelLanguage">
+              <PropertyRef Name="WordUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WordUnitRelUser_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRelWordUnit" Type="Self.UserRelWordUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="UserRelWordUnit">
+              <PropertyRef Name="UserLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WordUnitRelUser_WordUnit">
+          <End Role="WordUnits" Type="Self.WordUnits" Multiplicity="1" />
+          <End Role="UserRelWordUnit" Type="Self.UserRelWordUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WordUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRelWordUnit">
               <PropertyRef Name="WordUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MyOwnDictionaryModelStoreContainer">
-          <EntitySet Name="PartsOfSpeech" EntityType="Self.PartsOfSpeech" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="relSourcesWordUnit" EntityType="Self.relSourcesWordUnit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="relWordUnitPartOfSpeech" EntityType="Self.relWordUnitPartOfSpeech" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="relWordUnitSphereOfUsage" EntityType="Self.relWordUnitSphereOfUsage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sources" EntityType="Self.Sources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitTypes" EntityType="Self.UnitTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRelLanguage" EntityType="Self.UserRelLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRelSource" EntityType="Self.UserRelSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRelTag" EntityType="Self.UserRelTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRelWordUnit" EntityType="Self.UserRelWordUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WordUnitRelLanguage" EntityType="Self.WordUnitRelLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WordUnitRelSource" EntityType="Self.WordUnitRelSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WordUnitRelTag" EntityType="Self.WordUnitRelTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WordUnitRelUnitTypes" EntityType="Self.WordUnitRelUnitTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WordUnits" EntityType="Self.WordUnits" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_relSourcesWordUnit_Sources" Association="Self.FK_relSourcesWordUnit_Sources">
             <End Role="Sources" EntitySet="Sources" />
-            <End Role="relSourcesWordUnit" EntitySet="relSourcesWordUnit" />
+            <End Role="WordUnitRelSource" EntitySet="WordUnitRelSource" />
           </AssociationSet>
           <AssociationSet Name="FK_relSourcesWordUnit_WordUnits" Association="Self.FK_relSourcesWordUnit_WordUnits">
             <End Role="WordUnits" EntitySet="WordUnits" />
-            <End Role="relSourcesWordUnit" EntitySet="relSourcesWordUnit" />
+            <End Role="WordUnitRelSource" EntitySet="WordUnitRelSource" />
           </AssociationSet>
           <AssociationSet Name="FK_relWordUnitPartOfSpeech_PartsOfSpeech" Association="Self.FK_relWordUnitPartOfSpeech_PartsOfSpeech">
-            <End Role="PartsOfSpeech" EntitySet="PartsOfSpeech" />
-            <End Role="relWordUnitPartOfSpeech" EntitySet="relWordUnitPartOfSpeech" />
+            <End Role="UnitTypes" EntitySet="UnitTypes" />
+            <End Role="WordUnitRelUnitTypes" EntitySet="WordUnitRelUnitTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_relWordUnitPartOfSpeech_WordUnits" Association="Self.FK_relWordUnitPartOfSpeech_WordUnits">
             <End Role="WordUnits" EntitySet="WordUnits" />
-            <End Role="relWordUnitPartOfSpeech" EntitySet="relWordUnitPartOfSpeech" />
+            <End Role="WordUnitRelUnitTypes" EntitySet="WordUnitRelUnitTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_relWordUnitSphereOfUsage_SpheresOfUsage" Association="Self.FK_relWordUnitSphereOfUsage_SpheresOfUsage">
             <End Role="Tags" EntitySet="Tags" />
-            <End Role="relWordUnitSphereOfUsage" EntitySet="relWordUnitSphereOfUsage" />
+            <End Role="WordUnitRelTag" EntitySet="WordUnitRelTag" />
           </AssociationSet>
           <AssociationSet Name="FK_relWordUnitSphereOfUsage_WordUnits" Association="Self.FK_relWordUnitSphereOfUsage_WordUnits">
             <End Role="WordUnits" EntitySet="WordUnits" />
-            <End Role="relWordUnitSphereOfUsage" EntitySet="relWordUnitSphereOfUsage" />
+            <End Role="WordUnitRelTag" EntitySet="WordUnitRelTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelLanguage_Languages" Association="Self.FK_UserRelLanguage_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="UserRelLanguage" EntitySet="UserRelLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelLanguage_Users" Association="Self.FK_UserRelLanguage_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRelLanguage" EntitySet="UserRelLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelSource_Sources" Association="Self.FK_UserRelSource_Sources">
+            <End Role="Sources" EntitySet="Sources" />
+            <End Role="UserRelSource" EntitySet="UserRelSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelSource_Users" Association="Self.FK_UserRelSource_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRelSource" EntitySet="UserRelSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelTag_Tags" Association="Self.FK_UserRelTag_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="UserRelTag" EntitySet="UserRelTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelTag_Users" Association="Self.FK_UserRelTag_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRelTag" EntitySet="UserRelTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WordUnitRelLanguage_Languages" Association="Self.FK_WordUnitRelLanguage_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="WordUnitRelLanguage" EntitySet="WordUnitRelLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WordUnitRelLanguage_WordUnits" Association="Self.FK_WordUnitRelLanguage_WordUnits">
+            <End Role="WordUnits" EntitySet="WordUnits" />
+            <End Role="WordUnitRelLanguage" EntitySet="WordUnitRelLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WordUnitRelUser_UserId" Association="Self.FK_WordUnitRelUser_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRelWordUnit" EntitySet="UserRelWordUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WordUnitRelUser_WordUnit" Association="Self.FK_WordUnitRelUser_WordUnit">
+            <End Role="WordUnits" EntitySet="WordUnits" />
+            <End Role="UserRelWordUnit" EntitySet="UserRelWordUnit" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyOwnDictionaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="PartsOfSpeech">
+        <EntityContainer Name="MyOwnDictionaryContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Languages" EntityType="MyOwnDictionaryModel.Language" />
+          <EntitySet Name="Sources" EntityType="MyOwnDictionaryModel.Source" />
+          <EntitySet Name="sysdiagrams" EntityType="MyOwnDictionaryModel.sysdiagram" />
+          <EntitySet Name="Tags" EntityType="MyOwnDictionaryModel.Tag" />
+          <EntitySet Name="Themes" EntityType="MyOwnDictionaryModel.Theme" />
+          <EntitySet Name="UnitTypes" EntityType="MyOwnDictionaryModel.UnitType" />
+          <EntitySet Name="Users" EntityType="MyOwnDictionaryModel.User" />
+          <EntitySet Name="WordUnits" EntityType="MyOwnDictionaryModel.WordUnit" />
+          <AssociationSet Name="UserRelLanguage" Association="MyOwnDictionaryModel.UserRelLanguage">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserRelSource" Association="MyOwnDictionaryModel.UserRelSource">
+            <End Role="Source" EntitySet="Sources" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserRelTag" Association="MyOwnDictionaryModel.UserRelTag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserRelWordUnit" Association="MyOwnDictionaryModel.UserRelWordUnit">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WordUnit" EntitySet="WordUnits" />
+          </AssociationSet>
+          <AssociationSet Name="WordUnitRelLanguage" Association="MyOwnDictionaryModel.WordUnitRelLanguage">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="WordUnit" EntitySet="WordUnits" />
+          </AssociationSet>
+          <AssociationSet Name="WordUnitRelSource" Association="MyOwnDictionaryModel.WordUnitRelSource">
+            <End Role="Source" EntitySet="Sources" />
+            <End Role="WordUnit" EntitySet="WordUnits" />
+          </AssociationSet>
+          <AssociationSet Name="WordUnitRelTag" Association="MyOwnDictionaryModel.WordUnitRelTag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="WordUnit" EntitySet="WordUnits" />
+          </AssociationSet>
+          <AssociationSet Name="WordUnitRelUnitTypes" Association="MyOwnDictionaryModel.WordUnitRelUnitTypes">
+            <End Role="UnitType" EntitySet="UnitTypes" />
+            <End Role="WordUnit" EntitySet="WordUnits" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Language">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="WordUnits" Relationship="Self.relWordUnitPartOfSpeech" FromRole="PartsOfSpeech" ToRole="WordUnits" />
+          <Property Name="LanguageName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="MyOwnDictionaryModel.UserRelLanguage" FromRole="Language" ToRole="User" />
+          <NavigationProperty Name="WordUnits" Relationship="MyOwnDictionaryModel.WordUnitRelLanguage" FromRole="Language" ToRole="WordUnit" />
         </EntityType>
         <EntityType Name="Source">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="WordUnits" Relationship="Self.relSourcesWordUnit" FromRole="Sources" ToRole="WordUnits" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="MyOwnDictionaryModel.UserRelSource" FromRole="Source" ToRole="User" />
+          <NavigationProperty Name="WordUnits" Relationship="MyOwnDictionaryModel.WordUnitRelSource" FromRole="Source" ToRole="WordUnit" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Theme">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BrightColor" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PallidColor" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
-          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="WordUnit">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContentOfUnit" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Meaning" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Example" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsFormal" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Sources" Relationship="Self.relSourcesWordUnit" FromRole="WordUnits" ToRole="Sources" />
-          <NavigationProperty Name="PartsOfSpeeches" Relationship="Self.relWordUnitPartOfSpeech" FromRole="WordUnits" ToRole="PartsOfSpeech" />
-          <NavigationProperty Name="Tags" Relationship="MyOwnDictionaryModel.relWordUnitSphereOfUsage1" FromRole="WordUnit" ToRole="Tag" />
-        </EntityType>
-        <Association Name="relSourcesWordUnit">
-          <End Role="Sources" Type="Self.Source" Multiplicity="*" />
-          <End Role="WordUnits" Type="Self.WordUnit" Multiplicity="*" />
-        </Association>
-        <Association Name="relWordUnitPartOfSpeech">
-          <End Role="PartsOfSpeech" Type="Self.PartsOfSpeech" Multiplicity="*" />
-          <End Role="WordUnits" Type="Self.WordUnit" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="MyOwnDictionaryContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PartsOfSpeeches" EntityType="Self.PartsOfSpeech" />
-          <EntitySet Name="Sources" EntityType="Self.Source" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Themes" EntityType="Self.Theme" />
-          <EntitySet Name="WordUnits" EntityType="Self.WordUnit" />
-          <AssociationSet Name="relSourcesWordUnit" Association="Self.relSourcesWordUnit">
-            <End Role="Sources" EntitySet="Sources" />
-            <End Role="WordUnits" EntitySet="WordUnits" />
-          </AssociationSet>
-          <AssociationSet Name="relWordUnitPartOfSpeech" Association="Self.relWordUnitPartOfSpeech">
-            <End Role="PartsOfSpeech" EntitySet="PartsOfSpeeches" />
-            <End Role="WordUnits" EntitySet="WordUnits" />
-          </AssociationSet>
-          <EntitySet Name="Users" EntityType="MyOwnDictionaryModel.User" />
-          <EntitySet Name="Tags" EntityType="MyOwnDictionaryModel.Tag" />
-          <AssociationSet Name="relWordUnitSphereOfUsage1" Association="MyOwnDictionaryModel.relWordUnitSphereOfUsage1">
-            <End Role="Tag" EntitySet="Tags" />
-            <End Role="WordUnit" EntitySet="WordUnits" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -298,91 +499,122 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="IsChecked" Type="Boolean" />
-          <NavigationProperty Name="WordUnits" Relationship="MyOwnDictionaryModel.relWordUnitSphereOfUsage1" FromRole="Tag" ToRole="WordUnit" />
+          <NavigationProperty Name="Users" Relationship="MyOwnDictionaryModel.UserRelTag" FromRole="Tag" ToRole="User" />
+          <NavigationProperty Name="WordUnits" Relationship="MyOwnDictionaryModel.WordUnitRelTag" FromRole="Tag" ToRole="WordUnit" />
         </EntityType>
-        <Association Name="relWordUnitSphereOfUsage1">
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BrightColor" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PallidColor" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UnitType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsChecked" Type="Boolean" />
+          <NavigationProperty Name="WordUnits" Relationship="MyOwnDictionaryModel.WordUnitRelUnitTypes" FromRole="UnitType" ToRole="WordUnit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUsedLanguage" Type="Int32" />
+          <NavigationProperty Name="Languages" Relationship="MyOwnDictionaryModel.UserRelLanguage" FromRole="User" ToRole="Language" />
+          <NavigationProperty Name="Sources" Relationship="MyOwnDictionaryModel.UserRelSource" FromRole="User" ToRole="Source" />
+          <NavigationProperty Name="Tags" Relationship="MyOwnDictionaryModel.UserRelTag" FromRole="User" ToRole="Tag" />
+          <NavigationProperty Name="WordUnits" Relationship="MyOwnDictionaryModel.UserRelWordUnit" FromRole="User" ToRole="WordUnit" />
+        </EntityType>
+        <EntityType Name="WordUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentOfUnit" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Meaning" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Example" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsFormal" Type="Boolean" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="MyOwnDictionaryModel.UserRelWordUnit" FromRole="WordUnit" ToRole="User" />
+          <NavigationProperty Name="Languages" Relationship="MyOwnDictionaryModel.WordUnitRelLanguage" FromRole="WordUnit" ToRole="Language" />
+          <NavigationProperty Name="Sources" Relationship="MyOwnDictionaryModel.WordUnitRelSource" FromRole="WordUnit" ToRole="Source" />
+          <NavigationProperty Name="Tags" Relationship="MyOwnDictionaryModel.WordUnitRelTag" FromRole="WordUnit" ToRole="Tag" />
+          <NavigationProperty Name="UnitTypes" Relationship="MyOwnDictionaryModel.WordUnitRelUnitTypes" FromRole="WordUnit" ToRole="UnitType" />
+        </EntityType>
+        <Association Name="UserRelLanguage">
+          <End Type="MyOwnDictionaryModel.Language" Role="Language" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserRelSource">
+          <End Type="MyOwnDictionaryModel.Source" Role="Source" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserRelTag">
+          <End Type="MyOwnDictionaryModel.Tag" Role="Tag" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserRelWordUnit">
+          <End Type="MyOwnDictionaryModel.User" Role="User" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.WordUnit" Role="WordUnit" Multiplicity="*" />
+        </Association>
+        <Association Name="WordUnitRelLanguage">
+          <End Type="MyOwnDictionaryModel.Language" Role="Language" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.WordUnit" Role="WordUnit" Multiplicity="*" />
+        </Association>
+        <Association Name="WordUnitRelSource">
+          <End Type="MyOwnDictionaryModel.Source" Role="Source" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.WordUnit" Role="WordUnit" Multiplicity="*" />
+        </Association>
+        <Association Name="WordUnitRelTag">
           <End Type="MyOwnDictionaryModel.Tag" Role="Tag" Multiplicity="*" />
           <End Type="MyOwnDictionaryModel.WordUnit" Role="WordUnit" Multiplicity="*" />
         </Association>
-      </Schema>
+        <Association Name="WordUnitRelUnitTypes">
+          <End Type="MyOwnDictionaryModel.UnitType" Role="UnitType" Multiplicity="*" />
+          <End Type="MyOwnDictionaryModel.WordUnit" Role="WordUnit" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MyOwnDictionaryModelStoreContainer" CdmEntityContainer="MyOwnDictionaryContext">
-          <EntitySetMapping Name="PartsOfSpeeches">
-            <EntityTypeMapping TypeName="MyOwnDictionaryModel.PartsOfSpeech">
-              <MappingFragment StoreEntitySet="PartsOfSpeech">
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="MyOwnDictionaryModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sources">
             <EntityTypeMapping TypeName="MyOwnDictionaryModel.Source">
               <MappingFragment StoreEntitySet="Sources">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MyOwnDictionaryModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Themes">
-            <EntityTypeMapping TypeName="MyOwnDictionaryModel.Theme">
-              <MappingFragment StoreEntitySet="Themes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="BrightColor" ColumnName="BrightColor" />
-                <ScalarProperty Name="PallidColor" ColumnName="PallidColor" />
-                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WordUnits">
-            <EntityTypeMapping TypeName="MyOwnDictionaryModel.WordUnit">
-              <MappingFragment StoreEntitySet="WordUnits">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ContentOfUnit" ColumnName="ContentOfUnit" />
-                <ScalarProperty Name="Meaning" ColumnName="Meaning" />
-                <ScalarProperty Name="Example" ColumnName="Example" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="IsFormal" ColumnName="IsFormal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="relSourcesWordUnit" TypeName="MyOwnDictionaryModel.relSourcesWordUnit" StoreEntitySet="relSourcesWordUnit">
-            <EndProperty Name="Sources">
-              <ScalarProperty Name="Id" ColumnName="SourceId" />
-            </EndProperty>
-            <EndProperty Name="WordUnits">
-              <ScalarProperty Name="Id" ColumnName="WordUnitId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="relWordUnitPartOfSpeech" TypeName="MyOwnDictionaryModel.relWordUnitPartOfSpeech" StoreEntitySet="relWordUnitPartOfSpeech">
-            <EndProperty Name="PartsOfSpeech">
-              <ScalarProperty Name="Id" ColumnName="PartOfSpeechId" />
-            </EndProperty>
-            <EndProperty Name="WordUnits">
-              <ScalarProperty Name="Id" ColumnName="WordUnitId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MyOwnDictionaryModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -395,12 +627,111 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="relWordUnitSphereOfUsage1" TypeName="MyOwnDictionaryModel.relWordUnitSphereOfUsage1" StoreEntitySet="relWordUnitSphereOfUsage">
+          <EntitySetMapping Name="Themes">
+            <EntityTypeMapping TypeName="MyOwnDictionaryModel.Theme">
+              <MappingFragment StoreEntitySet="Themes">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="PallidColor" ColumnName="PallidColor" />
+                <ScalarProperty Name="BrightColor" ColumnName="BrightColor" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitTypes">
+            <EntityTypeMapping TypeName="MyOwnDictionaryModel.UnitType">
+              <MappingFragment StoreEntitySet="UnitTypes">
+                <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MyOwnDictionaryModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="LastUsedLanguage" ColumnName="LastUsedLanguage" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WordUnits">
+            <EntityTypeMapping TypeName="MyOwnDictionaryModel.WordUnit">
+              <MappingFragment StoreEntitySet="WordUnits">
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="IsFormal" ColumnName="IsFormal" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Example" ColumnName="Example" />
+                <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+                <ScalarProperty Name="ContentOfUnit" ColumnName="ContentOfUnit" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserRelLanguage" TypeName="MyOwnDictionaryModel.UserRelLanguage" StoreEntitySet="UserRelLanguage">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Login" ColumnName="UserLogin" />
+            </EndProperty>
+            <EndProperty Name="Language">
+              <ScalarProperty Name="Id" ColumnName="LanguageId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserRelSource" TypeName="MyOwnDictionaryModel.UserRelSource" StoreEntitySet="UserRelSource">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Login" ColumnName="UserLogin" />
+            </EndProperty>
+            <EndProperty Name="Source">
+              <ScalarProperty Name="Id" ColumnName="SourceId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserRelTag" TypeName="MyOwnDictionaryModel.UserRelTag" StoreEntitySet="UserRelTag">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Login" ColumnName="UserLogin" />
+            </EndProperty>
+            <EndProperty Name="Tag">
+              <ScalarProperty Name="Id" ColumnName="TagId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserRelWordUnit" TypeName="MyOwnDictionaryModel.UserRelWordUnit" StoreEntitySet="UserRelWordUnit">
+            <EndProperty Name="WordUnit">
+              <ScalarProperty Name="Id" ColumnName="WordUnitId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Login" ColumnName="UserLogin" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WordUnitRelLanguage" TypeName="MyOwnDictionaryModel.WordUnitRelLanguage" StoreEntitySet="WordUnitRelLanguage">
+            <EndProperty Name="WordUnit">
+              <ScalarProperty Name="Id" ColumnName="WordUnitId" />
+            </EndProperty>
+            <EndProperty Name="Language">
+              <ScalarProperty Name="Id" ColumnName="LanguageId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WordUnitRelSource" TypeName="MyOwnDictionaryModel.WordUnitRelSource" StoreEntitySet="WordUnitRelSource">
+            <EndProperty Name="WordUnit">
+              <ScalarProperty Name="Id" ColumnName="WordUnitId" />
+            </EndProperty>
+            <EndProperty Name="Source">
+              <ScalarProperty Name="Id" ColumnName="SourceId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WordUnitRelTag" TypeName="MyOwnDictionaryModel.WordUnitRelTag" StoreEntitySet="WordUnitRelTag">
             <EndProperty Name="WordUnit">
               <ScalarProperty Name="Id" ColumnName="WordUnitId" />
             </EndProperty>
             <EndProperty Name="Tag">
-              <ScalarProperty Name="Id" ColumnName="SphereOfUsageId" />
+              <ScalarProperty Name="Id" ColumnName="TagId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WordUnitRelUnitTypes" TypeName="MyOwnDictionaryModel.WordUnitRelUnitTypes" StoreEntitySet="WordUnitRelUnitTypes">
+            <EndProperty Name="WordUnit">
+              <ScalarProperty Name="Id" ColumnName="WordUnitId" />
+            </EndProperty>
+            <EndProperty Name="UnitType">
+              <ScalarProperty Name="Id" ColumnName="UnitTypeId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

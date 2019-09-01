@@ -19,7 +19,7 @@ namespace New_designed_Dictionary.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Literals {
@@ -142,6 +142,24 @@ namespace New_designed_Dictionary.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title:.
+        /// </summary>
+        public static string Label_Export_Title {
+            get {
+                return ResourceManager.GetString("Label_Export_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language:.
+        /// </summary>
+        public static string Label_Language {
+            get {
+                return ResourceManager.GetString("Label_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meaning:.
         /// </summary>
         public static string Label_Meaning {
@@ -160,11 +178,11 @@ namespace New_designed_Dictionary.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Part of Speech:.
+        ///   Looks up a localized string similar to Dict. units: .
         /// </summary>
-        public static string Label_PartOfSpeech {
+        public static string Label_NumberOfUnits {
             get {
-                return ResourceManager.GetString("Label_PartOfSpeech", resourceCulture);
+                return ResourceManager.GetString("Label_NumberOfUnits", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace New_designed_Dictionary.Resources {
         public static string Label_Tags {
             get {
                 return ResourceManager.GetString("Label_Tags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of unit:.
+        /// </summary>
+        public static string Label_TypeOfUnit {
+            get {
+                return ResourceManager.GetString("Label_TypeOfUnit", resourceCulture);
             }
         }
         

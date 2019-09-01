@@ -1,4 +1,5 @@
-﻿using System;
+﻿using New_designed_Dictionary.HelperClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,8 +33,12 @@ namespace New_designed_Dictionary.Authentication
             {
                 User user = Context.Users.Single(x => x.Login == login && x.Password == password);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                if (e != null)
+                {
+                    MessageBox.Show(e.ToString());
+                }
                 return false;
             }
 
@@ -44,7 +49,7 @@ namespace New_designed_Dictionary.Authentication
         {
             if (ValidateLogin(tbLogin.Text, tbPassword.Password) == true)
             {
-                MainWindow main = new MainWindow();
+                MainWindow main = new MainWindow(tbLogin.Text);
                 App.Current.MainWindow = main;
                 this.Close();
                 main.Show();
@@ -57,7 +62,7 @@ namespace New_designed_Dictionary.Authentication
             {
                 if (ValidateLogin(tbLogin.Text, tbPassword.Password) == true)
                 {
-                    MainWindow main = new MainWindow();
+                    MainWindow main = new MainWindow(tbLogin.Text);
                     App.Current.MainWindow = main;
                     this.Close();
                     main.Show();
@@ -71,6 +76,11 @@ namespace New_designed_Dictionary.Authentication
             {
                 tbPassword.Focus();
             }
+        }
+
+        private void TbPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

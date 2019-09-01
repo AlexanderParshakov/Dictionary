@@ -1,0 +1,258 @@
+﻿<Window x:Class="New_designed_Dictionary.Import_and_Export.PreEditAfterImport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:New_designed_Dictionary.Import_and_Export"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:resources="clr-namespace:New_designed_Dictionary.Resources"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Title="PreEditAfterImport"
+        Height="800"
+        Width="1100"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="680" />
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel 
+                        Orientation="Horizontal" 
+                        Height="50"
+                        >
+                <TextBox 
+                            x:Name="tbSearchUnits"
+                            Text="{x:Static resources:Literals.Placeholder_SearchWordUnits}" 
+                            Padding="5 0 0 0"
+                            Height="40" 
+                            Width="890" 
+                            Margin="5 0 0 0"
+                            Background="#dfe6ed"
+                            Foreground="#4a76a8"
+                            VerticalAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            FontSize="16"
+                            Visibility="Collapsed" 
+                            GotFocus="tbSearchUnits_GotFocus"
+                            LostFocus="tbSearchUnits_LostFocus" 
+                            KeyDown="tbSearchUnits_KeyDown"
+                            >
+                </TextBox>
+                <Button 
+                            x:Name="btnSearchUnits" 
+                            Width="200" 
+                            Height="40" 
+                            Content="Search"
+                            Background="#dfe6ed"
+                            Foreground="#4a76a8"
+                            BorderBrush="{x:Null}"
+                    Visibility="Collapsed"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"
+                            Click="btnSearchUnits_Click"
+                            >
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel
+                x:Name="spProgress"
+                VerticalAlignment="Center">
+                <TextBlock 
+                x:Name="lbUnitsLoaded"
+                Foreground="#4a76a8" 
+                FontFamily="Candara" 
+                Text="Units loaded..." 
+                FontSize="25" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center" 
+                Margin="0 0 0 10"
+                />
+                <ProgressBar
+                x:Name="pbUnitsImported"
+                Height="50"
+                Width="500"
+                Foreground="#4a76a8"
+                />
+            </StackPanel>
+            <DataGrid x:Name="dgWordUnits"
+                      Height="730"
+                      AutoGenerateColumns="False"
+                      SelectionUnit="FullRow"
+                      SelectionMode="Single"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      CanUserAddRows="False"
+                      Visibility="Collapsed"
+                      CellEditEnding="dgWordUnits_CellEditEnding"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Delete / Edit">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button 
+                                                x:Name="btnDeleteUnit" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left" 
+                                                Background="{x:Null}" 
+                                                BorderBrush="{x:Null}"
+                                                Click="btnDeleteUnit_Click"
+                                                >
+                                        <materialDesign:PackIcon
+                                                    Foreground="#4a76a8" 
+                                                    Kind="DeleteSweep" 
+                                                    Width="20" 
+                                                    Height="20"
+                                                    />
+                                    </Button>
+                                    <Button 
+                                                x:Name="btnEdit" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center" 
+                                                Background="{x:Null}" 
+                                                BorderBrush="{x:Null}"
+                                                Click="btnEdit_Click"
+                                                >
+                                        <materialDesign:PackIcon
+                                                    Foreground="#4a76a8" 
+                                                    Kind="SquareEditOutline" 
+                                                    Width="20" 
+                                                    Height="20"
+                                                    />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Dictionary Unit"
+                                            Width="400">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="tbDictionaryUnit"
+                                         Text="{Binding Path=ContentOfUnit, Mode=TwoWay}"
+                                         TextWrapping="Wrap"
+                                         MaxHeight="70" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=ContentOfUnit, Mode=TwoWay}"
+                                           TextWrapping="Wrap"
+                                           MaxHeight="70" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Meaning"
+                                            Width="400">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="tbMeaning"
+                                         Text="{Binding Path=Meaning, Mode=TwoWay}"
+                                         TextWrapping="Wrap"
+                                         MaxHeight="70" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Meaning, Mode=TwoWay}"
+                                           TextWrapping="Wrap"
+                                           MaxHeight="70" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTemplateColumn Header="Source"
+                                            Width="*">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox x:Name="cbWordSources"
+                                          Height="30"
+                                          VerticalAlignment="Center"
+                                          VerticalContentAlignment="Center"
+                                          Visibility="Visible"
+                                          Background="White"
+                                          Foreground="#4a76a8"
+                                          Padding="5 0 0 0"
+                                          ItemsSource="{Binding Path=AllSources}" 
+                                          SelectedValue="{Binding SourceName, Mode=TwoWay}"
+                                          VirtualizingPanel.IsVirtualizing="False"
+                                          SelectionChanged="cbWordSources_SelectionChanged"
+                                          >
+                                </ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="#4a76a8" >
+            <Separator VerticalAlignment="Top" Background="White"/>
+            <StackPanel 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                    >
+                <Button 
+                    x:Name="btnOK" 
+                    FontSize="21" 
+                    Width="200" 
+                    Height="45" 
+                    Content="Finish"
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Margin="0 0 10 0"
+                    IsEnabled="False"
+                    Click="btnOK_Click"
+                    />
+                <Button 
+                    x:Name="btnCancel" 
+                    FontSize="21" 
+                    Width="200" 
+                    Height="45" 
+                    Content="Cancel"
+                    Foreground="#4a76a8" 
+                    Background="#dfe6ed"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    Margin="0 0 10 0"
+                    Click="btnCancel_Click"
+                    />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

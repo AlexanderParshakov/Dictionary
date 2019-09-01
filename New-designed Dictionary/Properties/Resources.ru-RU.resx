@@ -118,36 +118,75 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CheckBox_SearchByExample" xml:space="preserve">
-    <value>example(s)</value>
+    <value>пример(ы)</value>
   </data>
   <data name="CheckBox_SearchByMeaning" xml:space="preserve">
-    <value>meaning(s)</value>
+    <value>значение(я)</value>
   </data>
   <data name="CheckBox_SearchByNote" xml:space="preserve">
-    <value>note(s)</value>
+    <value>заметка(и)</value>
   </data>
   <data name="CheckBox_SearchBySource" xml:space="preserve">
-    <value>source(s)</value>
+    <value>источник(и)</value>
   </data>
   <data name="CheckBox_SearchByTag" xml:space="preserve">
-    <value>tag(s)</value>
+    <value>тэг(и)</value>
   </data>
   <data name="CheckBox_SearchOnTyping" xml:space="preserve">
-    <value>Search while typing</value>
+    <value>Поиск во время набора</value>
   </data>
-  <data name="Filler_SearchSources" xml:space="preserve">
-    <value>Search sources...</value>
+  <data name="Label_AddedSuccessfully" xml:space="preserve">
+    <value>Успешно добавлено</value>
   </data>
-  <data name="Filler_SearchWordUnits" xml:space="preserve">
-    <value>Search word units...</value>
+  <data name="Label_Contents" xml:space="preserve">
+    <value>Содержание:</value>
+  </data>
+  <data name="Label_Example" xml:space="preserve">
+    <value>Пример:</value>
+  </data>
+  <data name="Label_Export_Title" xml:space="preserve">
+    <value>Заголовок:</value>
+  </data>
+  <data name="Label_Meaning" xml:space="preserve">
+    <value>Значение:</value>
+  </data>
+  <data name="Label_Note" xml:space="preserve">
+    <value>Заметка:</value>
+  </data>
+  <data name="Label_Source" xml:space="preserve">
+    <value>Источник:</value>
+  </data>
+  <data name="Label_Tags" xml:space="preserve">
+    <value>Тэги:</value>
+  </data>
+  <data name="Label_TypeOfUnit" xml:space="preserve">
+    <value>Тип юнита:</value>
+  </data>
+  <data name="Placeholder_Contents" xml:space="preserve">
+    <value>Введите содержание...</value>
+  </data>
+  <data name="Placeholder_Example" xml:space="preserve">
+    <value>Введите пример...</value>
+  </data>
+  <data name="Placeholder_Meaning" xml:space="preserve">
+    <value>Введите значение...</value>
+  </data>
+  <data name="Placeholder_Note" xml:space="preserve">
+    <value>Введите заметку...</value>
+  </data>
+  <data name="Placeholder_SearchSources" xml:space="preserve">
+    <value>Поиск источников...</value>
+  </data>
+  <data name="Placeholder_SearchWordUnits" xml:space="preserve">
+    <value>Поиск словарных единиц...</value>
   </data>
   <data name="Section_Id_IncludeProperties" xml:space="preserve">
-    <value>Include in search:</value>
+    <value>Включать в поиск:</value>
   </data>
   <data name="Title_Main_TopMiddle" xml:space="preserve">
     <value>My Own Dictionary</value>
   </data>
   <data name="Title_Modal_SearchSettings" xml:space="preserve">
-    <value>Search settings</value>
+    <value>Настройки поиска</value>
   </data>
 </root>

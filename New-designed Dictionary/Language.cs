@@ -12,27 +12,21 @@ namespace New_designed_Dictionary
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Language
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Language()
         {
-            this.Languages = new HashSet<Language>();
-            this.Sources = new HashSet<Source>();
-            this.Tags = new HashSet<Tag>();
+            this.Users = new HashSet<User>();
             this.WordUnits = new HashSet<WordUnit>();
         }
     
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> LastUsedLanguage { get; set; }
+        public int Id { get; set; }
+        public string LanguageName { get; set; }
+        public string Location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Language> Languages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Source> Sources { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WordUnit> WordUnits { get; set; }
     }

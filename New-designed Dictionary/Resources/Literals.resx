@@ -144,20 +144,29 @@
   <data name="Label_Example" xml:space="preserve">
     <value>Example:</value>
   </data>
+  <data name="Label_Export_Title" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="Label_Language" xml:space="preserve">
+    <value>Language:</value>
+  </data>
   <data name="Label_Meaning" xml:space="preserve">
     <value>Meaning:</value>
   </data>
   <data name="Label_Note" xml:space="preserve">
     <value>Note:</value>
   </data>
-  <data name="Label_PartOfSpeech" xml:space="preserve">
-    <value>Part of Speech:</value>
+  <data name="Label_NumberOfUnits" xml:space="preserve">
+    <value>Dict. units: </value>
   </data>
   <data name="Label_Source" xml:space="preserve">
     <value>Source:</value>
   </data>
   <data name="Label_Tags" xml:space="preserve">
     <value>Tags:</value>
+  </data>
+  <data name="Label_TypeOfUnit" xml:space="preserve">
+    <value>Type of unit:</value>
   </data>
   <data name="Placeholder_Contents" xml:space="preserve">
     <value>Input the contents...</value>

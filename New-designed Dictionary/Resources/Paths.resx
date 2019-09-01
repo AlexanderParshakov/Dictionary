@@ -123,14 +123,17 @@
   <data name="Ontology_Base" xml:space="preserve">
     <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#</value>
   </data>
+  <data name="Ontology_DictionaryUnit" xml:space="preserve">
+    <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#DictionaryUnit</value>
+  </data>
   <data name="Ontology_Example" xml:space="preserve">
     <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#Example</value>
   </data>
-  <data name="Ontology_PartOfSpeech" xml:space="preserve">
-    <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#PartOfSpeech</value>
+  <data name="Ontology_Filename" xml:space="preserve">
+    <value>\My Real Knowledge Base.owl</value>
   </data>
-  <data name="Ontology_Path" xml:space="preserve">
-    <value>D:\Folders\SampleSave.owl</value>
+  <data name="Ontology_Noun" xml:space="preserve">
+    <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#NounClass</value>
   </data>
   <data name="Ontology_Property_AppliesUnit" xml:space="preserve">
     <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#AppliesUnit</value>
@@ -159,8 +162,8 @@
   <data name="Ontology_Tag" xml:space="preserve">
     <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#Tag</value>
   </data>
-  <data name="Ontology_WordUnit" xml:space="preserve">
-    <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#WordUnit</value>
+  <data name="Ontology_TypeOfUnit" xml:space="preserve">
+    <value>http://www.semanticweb.org/alexander/ontologies/2018/11/Dictionary#TypeOfUnit</value>
   </data>
   <data name="SPARQL_Namespace" xml:space="preserve">
     <value>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
