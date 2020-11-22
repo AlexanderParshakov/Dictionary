@@ -1,6 +1,7 @@
 ﻿using New_designed_Dictionary.Customize_Interface;
 using New_designed_Dictionary.HelperClasses;
 using New_designed_Dictionary.HelperClasses.Customize_Interface;
+using New_designed_Dictionary.HelperClasses.Customize_Interface.UI_Elements.LoadingAnimation;
 using New_designed_Dictionary.Import_and_Export;
 using New_designed_Dictionary.Modals;
 using New_designed_Dictionary.ViewModels;
@@ -14,6 +15,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +33,7 @@ namespace New_designed_Dictionary
         static Vocabulary vectorVocabulary = null;
         static SearchSettingsClass searchSettings = new SearchSettingsClass();
         static int CurrentSourceFromList = 0;
+        static VMSource CurrentSourceForContextMenu = new VMSource();
         static string SourceWrapping = "Wrap";
         public static string UserName = "";
         static ObservableCollection<VMWordUnit> DictionaryUnits = new ObservableCollection<VMWordUnit>();
@@ -247,13 +250,20 @@ namespace New_designed_Dictionary
             cbLanguages.SelectionChanged += CbLanguages_SelectionChanged;
             //vectorVocabulary = new Word2VecBinaryReader().Read(New_designed_Dictionary.Resources.Paths.Word2Vec_bin_file);
             Storyboard sb = this.FindResource("MenuClose") as Storyboard;
-            sb.Completed += Sb_Completed;
-            sb.Changed += Sb_Changed;
+            //this.Dispatcher.Invoke(() =>
+            //{
+            //    sb.Completed += Sb_Completed;
+            //    sb.Changed += Sb_Changed;
+            //});
         }
 
         private void Sb_Changed(object sender, EventArgs e)
         {
             SourceWrapping = "NoWrap";
+            if (lvSources.Items.Count == 0)
+            {
+                Loader.StopLoadingSources(lvSources, loaderSources);
+            }
         }
 
         private void Sb_Completed(object sender, EventArgs e)
@@ -266,8 +276,13 @@ namespace New_designed_Dictionary
         {
             InitializeComponent();
             UserName = userName;
-            Initiar();
-            Properties.Resources.Culture = new CultureInfo(ConfigurationManager.AppSettings["Culture"]);
+
+            var tsk = Task.Factory.StartNew(Initiar);
+            tsk.ContinueWith(t => { MessageBox.Show(t.Exception.InnerException.Message); },
+       CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted,
+       TaskScheduler.FromCurrentSynchronizationContext());
+            //Initiar();
+            //Properties.Resources.Culture = new CultureInfo(ConfigurationManager.AppSettings["Culture"]);
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -347,10 +362,18 @@ namespace New_designed_Dictionary
         private void btnOpenList_Click(object sender, RoutedEventArgs e)
         {
             OpenSourceMenu();
+            if (lvSources.Items.Count == 0)
+            {
+                Loader.StartLoadingSources(lvSources, loaderSources);
+            }
         }
         private void btnCloseList_Click(object sender, RoutedEventArgs e)
         {
-            //CollapseSourceMenu();
+            CollapseSourceMenu();
+            if (lvSources.Items.Count == 0)
+            {
+                Loader.StopLoadingSources(lvSources, loaderSources);
+            }
         }
         private void btnSaveExample_Click(object sender, RoutedEventArgs e)
         {
@@ -394,9 +417,12 @@ namespace New_designed_Dictionary
         }
         private void btnSearchUnits_Click(object sender, RoutedEventArgs e)
         {
-            //Thread thread = new Thread(new ParameterizedThreadStart(RefreshDictionaryList));
-            //thread.Start(tbSearchUnits);
-            RefreshDictionaryList();
+            Loader.StartLoadingWords(dgWordUnits, loaderWordUnits);
+            var tsk = Task.Factory.StartNew(RefreshDictionaryList);
+            tsk.ContinueWith(t => { MessageBox.Show(t.Exception.InnerException.Message); },
+       CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted,
+       TaskScheduler.FromCurrentSynchronizationContext());
+            //RefreshDictionaryList();
         }
         private void btnOpenSettings_Click(object sender, RoutedEventArgs e)
         {
@@ -708,7 +734,7 @@ namespace New_designed_Dictionary
         {
             ((ComboBox)sender).ItemsSource = null;
         }
-        
+
         private void CbLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshDictionaryList();
@@ -789,58 +815,92 @@ namespace New_designed_Dictionary
 
         private void CollapseSourceMenu()
         {
-            btnOpenList.Visibility = Visibility.Visible;
-            btnCloseList.Visibility = Visibility.Collapsed;
-            btnCloseList.Width = 50;
-            lbHideSourceMenu.Visibility = Visibility.Collapsed;
-            lbOpenSourceMenu.Visibility = Visibility.Visible;
-            gridSearch.Width = 50;
-            //tbSearch.Visibility = Visibility.Collapsed;
-            lvSources.Visibility = Visibility.Collapsed;
-            lvInitializedItems.Visibility = Visibility.Collapsed;
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                btnOpenList.Visibility = Visibility.Visible;
+                btnCloseList.Visibility = Visibility.Collapsed;
+                btnCloseList.Width = 50;
+                lbHideSourceMenu.Visibility = Visibility.Collapsed;
+                lbOpenSourceMenu.Visibility = Visibility.Visible;
+                gridSearch.Width = 50;
+                //tbSearch.Visibility = Visibility.Collapsed;
+                lvSources.Visibility = Visibility.Collapsed;
+                lvInitializedItems.Visibility = Visibility.Collapsed;
+            }));
         }
         private void OpenSourceMenu()
         {
-            btnOpenList.Visibility = Visibility.Collapsed;
-            btnCloseList.Visibility = Visibility.Visible;
-            btnCloseList.Width = 210;
-            lbHideSourceMenu.Visibility = Visibility.Visible;
-            lbOpenSourceMenu.Visibility = Visibility.Collapsed;
-            gridSearch.Width = 210;
-            //tbSearch.Visibility = Visibility.Visible;
-            lvSources.Visibility = Visibility.Visible;
-            lvInitializedItems.Visibility = Visibility.Visible;
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                btnOpenList.Visibility = Visibility.Collapsed;
+                btnCloseList.Visibility = Visibility.Visible;
+                btnCloseList.Width = 210;
+                lbHideSourceMenu.Visibility = Visibility.Visible;
+                lbOpenSourceMenu.Visibility = Visibility.Collapsed;
+                gridSearch.Width = 210;
+                //tbSearch.Visibility = Visibility.Visible;
+                lvSources.Visibility = Visibility.Visible;
+                lvInitializedItems.Visibility = Visibility.Visible;
+            }));
         }
 
         #endregion SourceMenu
         #region Bind Items to Controls
         private void RefreshDictionaryList()
         {
-            DictionaryUnits = GetFilteredByEverything(tbSearchUnits.Text);
+            Language lang = cbLanguages.SelectedItem as Language;
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                DictionaryUnits = GetFilteredByEverything(tbSearchUnits.Text, lang);
+            }));
             DictionaryUnits = new ObservableCollection<VMWordUnit>(DictionaryUnits.OrderByDescending(x => x.Datetime));
-            dgWordUnits.ItemsSource = DictionaryUnits;
-            lbNumberOfUnits.Text = New_designed_Dictionary.Resources.Literals.Label_NumberOfUnits + dgWordUnits.Items.Count;
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                dgWordUnits.ItemsSource = DictionaryUnits;
+                lbNumberOfUnits.Text = New_designed_Dictionary.Resources.Literals.Label_NumberOfUnits + dgWordUnits.Items.Count;
+                Loader.StopLoadingWords(dgWordUnits, loaderWordUnits);
+            }));
         }
         private void DefineItemSources()
         {
-            lvSources.ItemsSource = DBComm.GetVMSources();
-
-            cbLanguages.ItemsSource = DBComm.GetVMLanguages();
-            Language lang = DBComm.Context.Languages.SingleOrDefault(l => l.Id == DBComm.GlobalUser.LastUsedLanguage);
-            VMLanguage vmLang = DBComm.FromLanguageToVMLanguage(lang);
-            cbLanguages.SelectedValue = vmLang.Id;
-
-            DictionaryUnits = DBComm.GetVMWordUnits((cbLanguages.SelectedItem as Language).Id);
+            DictionaryUnits = DBComm.GetVMWordUnits();
             DictionaryUnits = new ObservableCollection<VMWordUnit>(DictionaryUnits.OrderByDescending(x => x.Datetime));
-            dgWordUnits.ItemsSource = DictionaryUnits;
-            lbNumberOfUnits.Text = New_designed_Dictionary.Resources.Literals.Label_NumberOfUnits + dgWordUnits.Items.Count;
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                dgWordUnits.ItemsSource = DictionaryUnits;
+                lbNumberOfUnits.Text = New_designed_Dictionary.Resources.Literals.Label_NumberOfUnits + DictionaryUnits.Count;
+                loaderWordUnits.Visibility = Visibility.Collapsed;
+            }));
+            var sourcesRes = DBComm.GetVMSources();
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                lvSources.ItemsSource = sourcesRes;
+                loaderSources.Visibility = Visibility.Collapsed;
+            }));
+            var langsRes = DBComm.GetVMLanguages();
+            var langRes = DBComm.Context.Languages.SingleOrDefault(l => l.Id == DBComm.GlobalUser.LastUsedLanguage);
+            var vmLangRes = DBComm.FromLanguageToVMLanguage(langRes);
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                cbLanguages.ItemsSource = langsRes;
+                Language lang = langRes;
+                VMLanguage vmLang = vmLangRes;
+                cbLanguages.SelectedValue = vmLang.Id;
+            }));
+            var tagsRes = DBComm.GetTags();
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                itemsControlTags.ItemsSource = tagsRes;
+                loaderTags.Visibility = Visibility.Collapsed;
+            }));
 
-            itemsControlTags.ItemsSource = DBComm.GetTags();
 
 
-
-            cbTypeOfTagFilter.ItemsSource = new List<string> { "Excluding filter", "Including filter" };
-            cbTypeOfTagFilter.SelectedValue = "Excluding filter";
+            //this.Dispatcher.Invoke(() =>
+            //{
+            //    cbTypeOfTagFilter.ItemsSource = new List<string> { "Excluding filter", "Including filter" };
+            //    cbTypeOfTagFilter.SelectedValue = "Excluding filter";
+            //});
         }
         #endregion
         #region Filtering
@@ -1090,12 +1150,12 @@ namespace New_designed_Dictionary
                     {
                         if (cbTypeOfTagFilter.SelectedValue.ToString().Contains("Including"))
                         {
-                            ObservableCollection<WordUnit> allWords = new ObservableCollection<WordUnit>(tag.WordUnits);
+                            List<WordUnit> allWords = new List<WordUnit>(tag.WordUnits);
                             finalList.AddRange(DBComm.ConvertToVMWordUnits(allWords));
                         }
                         else if (cbTypeOfTagFilter.SelectedValue.ToString().Contains("Excluding"))
                         {
-                            ObservableCollection<WordUnit> allWords = new ObservableCollection<WordUnit>(tag.WordUnits);
+                            List<WordUnit> allWords = new List<WordUnit>(tag.WordUnits);
                             if (finalList.Count == 0)
                             {
                                 finalList.AddRange(DBComm.ConvertToVMWordUnits(allWords));
@@ -1131,9 +1191,8 @@ namespace New_designed_Dictionary
             finalList = new ObservableCollection<VMWordUnit>(finalList.Intersect(initialUnits).Distinct());
             return finalList;
         }
-        private ObservableCollection<VMWordUnit> GetFilteredByEverything(string textInput)
+        private ObservableCollection<VMWordUnit> GetFilteredByEverything(string textInput, Language lang)
         {
-            Language lang = cbLanguages.SelectedItem as Language;
             ObservableCollection<VMWordUnit> InitialUnits = DBComm.GetVMWordUnits(lang.Id);
 
             if (InitialUnits.Count() != 0)
@@ -1243,6 +1302,37 @@ namespace New_designed_Dictionary
         private void CbTypeOfTagFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshDictionaryList();
+        }
+
+        private void BtnEditSource_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnListViewItemPreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = (ListViewItem)sender;
+            CurrentSourceForContextMenu = item.Content as VMSource;
+            e.Handled = true;
+        }
+
+        private void contextEditClicked(object sender, RoutedEventArgs e)
+        {
+            EditSource editSource = new EditSource(CurrentSourceForContextMenu);
+            editSource.ShowDialog();
+            //if (wu.ContentOfUnit != null && wu.Meaning != null)
+            //{
+            //    wu.TagsToString();
+            //    DictionaryUnits[index] = wu;
+            //    dgWordUnits.ItemsSource = null;
+            //    DictionaryUnits = new ObservableCollection<VMWordUnit>(DictionaryUnits.OrderByDescending(x => x.Datetime));
+            //    dgWordUnits.ItemsSource = DictionaryUnits;
+            //    DisableFindButtons();
+            //}
+            //if (itemsControlTags.Items.Count != DBComm.GetTags().Count)
+            //{
+            //    itemsControlTags.ItemsSource = DBComm.GetTags();
+            //}
         }
     }
 }

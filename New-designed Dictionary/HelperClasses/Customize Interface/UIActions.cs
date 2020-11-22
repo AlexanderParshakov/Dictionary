@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,15 @@ namespace New_designed_Dictionary.HelperClasses.Customize_Interface
                 ((Window)currentWindow).Show();
                 UIActions.AnimateOpacity(0.5, 1, 0.5, currentWindow);
             }
+        }
+        public static byte [] GetReducedImage (byte [] myBytes, int newWidth = 700, int newHeight = 400) // width 250 recommended, height 220
+        {
+            System.IO.MemoryStream myMemStream = new System.IO.MemoryStream(myBytes);
+            System.Drawing.Image fullsizeImage = System.Drawing.Image.FromStream(myMemStream);
+            System.Drawing.Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
+            System.IO.MemoryStream myResult = new System.IO.MemoryStream();
+            newImage.Save(myResult, System.Drawing.Imaging.ImageFormat.Jpeg);  //Or whatever format you want.
+            return myResult.ToArray();  //Returns a new byte array.
         }
     }
 }

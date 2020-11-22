@@ -1,0 +1,138 @@
+﻿<Window x:Class="New_designed_Dictionary.EditSource"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:New_designed_Dictionary"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="EditSource" Height="405.179" Width="439.462" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        WindowStyle="None" 
+        Background="Black"
+        FontFamily="Candara" 
+        Loaded="Window_Loaded">
+    <Grid Name="gridAll" MouseDown="gridAll_MouseDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="#4a76a8">
+                <StackPanel 
+                    Grid.Row="0" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    >
+                    <TextBlock 
+                        Text="Editing..." 
+                        FontSize="21"
+                        Foreground="White"
+                        />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid 
+                    Grid.Row="0" 
+                    Background="White"
+                    >
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        Margin="0 0 0 0" 
+                        HorizontalAlignment="Center"
+                        >
+                        <TextBox 
+                            x:Name="tbSourceName" 
+                            Width="430" 
+                            Background="#dfe6ed"
+                            Foreground="#4a76a8"
+                            TextAlignment="Center" 
+                            FontSize="17"
+                            Text="Source name here..."  
+                            VerticalAlignment="Center" 
+                            LostFocus="tbSourceName_LostFocus" 
+                            GotFocus="tbSourceName_GotFocus"
+                            TextChanged="tbSourceName_TextChanged"
+                            >
+                        </TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Image 
+                        x:Name="imgSource" 
+                        Visibility="Visible" 
+                        Width="400" 
+                        Height="220" 
+                        Margin="0 0 0 30"
+                        />
+                    <TextBlock 
+                        x:Name="lbPickAPicture" 
+                        FontFamily="Candara" 
+                        Text="Pick a picture to display the source" 
+                        Foreground="#4a76a8" 
+                        FontSize="25" 
+                        VerticalAlignment="Center" 
+                        Margin="0 0 0 25" 
+                        HorizontalAlignment="Center"
+                        />
+                    <Button 
+                        x:Name="btnBrowse" 
+                        VerticalAlignment="Bottom" 
+                        HorizontalAlignment="Right"
+                        Width="150" 
+                        Height="35" 
+                        Foreground="#4a76a8" 
+                        Background="#dfe6ed"
+                        Content="Browse..." 
+                        FontSize="21"
+                        Margin="0 0 10 15"
+                        Click="btnBrowse_Click" 
+                        />
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2" Background="#4a76a8">
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    >
+                    <Button 
+                        x:Name="btnAdd" 
+                        FontSize="21" 
+                        Width="150" 
+                        Height="35" 
+                        Content="OK"
+                        Foreground="#4a76a8" 
+                        Background="#dfe6ed"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Right" 
+                        IsEnabled="False"
+                        Margin="15 2 10 0" 
+                        Click="btnAdd_Click"
+                        />
+                    <Button 
+                        x:Name="btnCancel" 
+                        FontSize="21" 
+                        Width="150" 
+                        Height="35" 
+                        Content="Cancel"
+                        Foreground="#4a76a8" 
+                        Background="#dfe6ed"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Right" 
+                        Margin="0 2 10 0" 
+                        Click="btnCancel_Click"
+                        />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

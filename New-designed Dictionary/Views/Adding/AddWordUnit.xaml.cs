@@ -135,6 +135,7 @@ namespace New_designed_Dictionary
                 Wu.Tags.Add(DBComm.Context.Tags.SingleOrDefault(s => s.Name == "Non-specified"));
             }
             Wu.Users.Add(DBComm.Context.Users.SingleOrDefault(s => s.Login == DBComm.GlobalUser.Login));
+            Wu.Languages.Add(DBComm.Context.Languages.SingleOrDefault(x => x.Id == ((Language)cbLanguages.SelectedItem).Id));
             DBComm.AddWordUnit(Wu);
             Unit(Wu);
         }

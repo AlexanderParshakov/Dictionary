@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using New_designed_Dictionary.HelperClasses;
 using New_designed_Dictionary.HelperClasses.Customize_Interface;
+using New_designed_Dictionary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,15 +24,12 @@ namespace New_designed_Dictionary
     /// <summary>
     /// Interaction logic for AddSource.xaml
     /// </summary>
-    public partial class AddSource : Window
+    public partial class EditSource : Window
     {
         static string Destination = Directory.GetCurrentDirectory() + @"\SourcePictures";
+        static private Source gSource = new Source();
         static string FileName = "";
         // FUNCTIONS
-        private string StringWithoutStopChars(string stringToProcess)
-        {
-            return stringToProcess.Replace("\\", "").Replace("/", "").Replace("*", "").Replace("[", "").Replace("]", "").Replace(":", "").Replace("?", "");
-        }
         private void CheckNameInput()
         {
             int Checks = 0;
@@ -80,28 +78,21 @@ namespace New_designed_Dictionary
             }
         }
 
-        private void AddTheSource()
+        private void UpdateTheSource()
         {
-            Source s = new Source();
+            Source s = DBComm.Context.Sources.SingleOrDefault(x => x.Id == gSource.Id);
             s.Name = tbSourceName.Text;
-            s.Users.Add(DBComm.Context.Users.SingleOrDefault(so => so.Login == DBComm.GlobalUser.Login));
-            if (DBComm.Context.Sources.SingleOrDefault(x => x.Name == s.Name) == null)
-            {
-                s.Picture = UIActions.GetReducedImage(File.ReadAllBytes(FileName));
-                DBComm.Context.Sources.Add(s);
-                DBComm.Context.SaveChanges();
-
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("A source with such a name already exists.");
-            }
+            s.Picture = UIActions.GetReducedImage(File.ReadAllBytes(FileName));
+            DBComm.Context.SaveChanges();
+            this.Close();
         }
         // FUNCTIONS
-        public AddSource()
+        public EditSource(VMSource source)
         {
             InitializeComponent();
+            tbSourceName.Text = source.Name;
+            imgSource.Source = source.ImageData;
+            gSource = source;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -136,7 +127,7 @@ namespace New_designed_Dictionary
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddTheSource();
+            UpdateTheSource();
         }
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)

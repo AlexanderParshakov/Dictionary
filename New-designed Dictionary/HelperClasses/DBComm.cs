@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,16 +23,19 @@ namespace New_designed_Dictionary.HelperClasses
         #region Data Retrieval
         public static ObservableCollection<VMWordUnit> GetVMWordUnits(int Language = 1)
         {
-            ObservableCollection<WordUnit> WordUnits = new ObservableCollection<WordUnit>();
+            List<WordUnit> WordUnits = new List<WordUnit>();
 
-            WordUnits = new ObservableCollection<WordUnit>(Context.WordUnits.Where(l => l.Users.Select(c => c.Login).Contains(GlobalUser.Login)).
-                Where(x => x.Languages.Select(s => s.Id).Contains(Language)));
-            return ConvertToVMWordUnits(WordUnits);
+            WordUnits = Context.WordUnits
+                .AsNoTracking()
+                .Where(l => l.Users.Select(c => c.Login).Contains(GlobalUser.Login))
+                .Where(x => x.Languages.Select(s => s.Id).Contains(Language)).ToList();
+            return ConvertToVMWordUnits(new List<WordUnit>(WordUnits.Take(5)));
         }
         public static ObservableCollection<VMSource> GetVMSources(int Language = 1)
         {
+            GlobalUser = Context.Users.Single(u => u.Login == MainWindow.UserName);
             ObservableCollection<Source> sources = new ObservableCollection<Source>();
-            sources = new ObservableCollection<Source>(Context.Sources.Where(l => l.Users.Select(c => c.Login).Contains(GlobalUser.Login)));
+            sources = new ObservableCollection<Source>(GlobalUser.Sources);
             return ConvertToVMSources(sources);
         }
         public static ObservableCollection<Source> GetSources()
@@ -75,7 +79,7 @@ namespace New_designed_Dictionary.HelperClasses
 
 
         #region Modifying Lists
-        public static ObservableCollection<VMWordUnit> ConvertToVMWordUnits(ObservableCollection<WordUnit> WordUnits)
+        public static ObservableCollection<VMWordUnit> ConvertToVMWordUnits(List<WordUnit> WordUnits)
         {
             ObservableCollection<VMWordUnit> VMWordUnits = new ObservableCollection<VMWordUnit>();
 
@@ -107,7 +111,7 @@ namespace New_designed_Dictionary.HelperClasses
         #endregion
 
         #region Modifying Objects
-        private static BitmapImage ToImage(byte[] array)
+        public static BitmapImage ToImage(byte[] array)
         {
             using (var ms = new System.IO.MemoryStream(array))
             {
@@ -116,6 +120,7 @@ namespace New_designed_Dictionary.HelperClasses
                 image.CacheOption = BitmapCacheOption.OnLoad;
                 image.StreamSource = ms;
                 image.EndInit();
+                image.Freeze();
                 return image;
             }
         }
@@ -179,6 +184,7 @@ namespace New_designed_Dictionary.HelperClasses
             newWu.Sources = VMWu.Sources;
             newWu.Tags = VMWu.Tags;
             newWu.UnitTypes = VMWu.UnitTypes;
+            newWu.Languages = VMWu.Languages;
             Context.SaveChanges();
         }
         public static void UpdateLastUsedLanguage(int langId)
@@ -211,6 +217,7 @@ namespace New_designed_Dictionary.HelperClasses
             wu.Tags.Clear();
             wu.UnitTypes.Clear();
             wu.Users.Clear();
+            wu.Languages.Clear();
             Context.WordUnits.Remove(wu);
             Context.SaveChanges();
         }

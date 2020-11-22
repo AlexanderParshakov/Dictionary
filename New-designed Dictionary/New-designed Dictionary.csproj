@@ -121,7 +121,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="HelperClasses\CurrentFields.cs" />
+    <Compile Include="HelperClasses\Customize Interface\UI Elements\LoadingAnimation\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperClasses\Customize Interface\UI Elements\LoadingAnimation\Loader.cs" />
+    <Compile Include="HelperClasses\Customize Interface\UI Elements\LoadingAnimation\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelperClasses\Customize Interface\UIActions.cs" />
+    <Compile Include="HelperClasses\Customize Interface\VisualTreeHelperExtension.cs" />
     <Compile Include="HelperClasses\EqualityComparer.cs" />
     <Compile Include="Language.cs">
       <DependentUpon>MyOwnDictionaryContext.tt</DependentUpon>
@@ -150,6 +158,9 @@
     </Compile>
     <Compile Include="Views\Adding\AddWordUnit.xaml.cs">
       <DependentUpon>AddWordUnit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editing\EditSource.xaml.cs">
+      <DependentUpon>EditSource.xaml</DependentUpon>
     </Compile>
     <Compile Include="WordUnit.cs">
       <DependentUpon>MyOwnDictionaryContext.tt</DependentUpon>
@@ -251,7 +262,14 @@
       <DependentUpon>ThemeGallery.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\VMWordUnit.cs" />
-    <Compile Include="HelperClasses\Customize Interface\VisualTreeHelperExtension.cs" />
+    <Page Include="HelperClasses\Customize Interface\UI Elements\LoadingAnimation\Block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelperClasses\Customize Interface\UI Elements\LoadingAnimation\LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Adding\AddSource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -263,6 +281,10 @@
     <Page Include="Views\Authentication\Authentication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editing\EditSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Import and Export\ExportPreparation.xaml">
       <SubType>Designer</SubType>

@@ -16,7 +16,8 @@ namespace New_designed_Dictionary.ViewModels
         public void TagsToString()
         {
             TagsString = "";
-            this.Tags = DBComm.Context.WordUnits.SingleOrDefault(x => x.Id == this.Id).Tags;
+            using (MyOwnDictionaryContext context = new MyOwnDictionaryContext())
+            this.Tags = context.WordUnits.SingleOrDefault(x => x.Id == this.Id).Tags;
 
             for (int i = 0; i < this.Tags.Count; i++)
             {
